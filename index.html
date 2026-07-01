@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safari Softwares | Custom Software Solutions</title>
+    <meta name="description" content="Safari Softwares builds custom web applications, management systems, and tools that help businesses and organizations streamline operations and work more efficiently.">
+    <style>
+        :root {
+            --bg: #faf9f6;
+            --text: #1a1a1a;
+            --text-light: #555;
+            --accent: #d97706;
+            --accent-hover: #b65c04;
+            --card-bg: #ffffff;
+            --border: #e5e0d8;
+            --shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            --radius: 12px;
+            --max-width: 1100px;
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ---- Typography ---- */
+        h1,
+        h2,
+        h3 {
+            line-height: 1.25;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        h1 {
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+        }
+        h2 {
+            font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+            margin-bottom: 0.5rem;
+        }
+        h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.3rem;
+        }
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+        .section-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        a:hover {
+            color: var(--accent-hover);
+        }
+
+        /* ---- Layout ---- */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        section {
+            padding: 5rem 0;
+        }
+        section:first-of-type {
+            padding-top: 6rem;
+        }
+
+        /* ---- Header / Nav ---- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(250, 249, 246, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+            transition: box-shadow 0.3s;
+        }
+        header.scrolled {
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        .logo {
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--text);
+            letter-spacing: -0.01em;
+        }
+        .logo span {
+            color: var(--accent);
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            padding-bottom: 4px;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.25s;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff !important;
+            padding: 0.65rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.15s;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--text) !important;
+            border: 2px solid var(--border);
+            margin-left: 0.75rem;
+        }
+        .btn-outline:hover {
+            border-color: var(--accent);
+            background: transparent;
+            color: var(--accent) !important;
+        }
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        .mobile-menu-btn span {
+            display: block;
+            width: 26px;
+            height: 2.5px;
+            background: var(--text);
+            margin: 6px 0;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* ---- Hero ---- */
+        .hero {
+            padding-top: 8rem;
+            padding-bottom: 4rem;
+            text-align: center;
+        }
+        .hero h1 {
+            max-width: 750px;
+            margin: 0 auto 1.25rem;
+        }
+        .hero p {
+            max-width: 550px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: 0.35rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+        .hero-badge .dot {
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.4;
+            }
+        }
+
+        /* ---- Services ---- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.75rem;
+            margin-top: 2.5rem;
+        }
+        .service-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem 1.75rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        .service-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* ---- Portfolio ---- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.25s, box-shadow 0.25s;
+            display: flex;
+            flex-direction: column;
+        }
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        .project-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            flex-shrink: 0;
+        }
+        .project-body {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .project-body h3 {
+            margin-bottom: 0.25rem;
+        }
+        .project-body p {
+            flex-grow: 1;
+            font-size: 0.92rem;
+        }
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 1rem;
+        }
+        .tech-tag {
+            background: #f5f0ea;
+            color: var(--text-light);
+            padding: 0.25rem 0.7rem;
+            border-radius: 4px;
+            font-size: 0.78rem;
+            font-weight: 500;
+        }
+        .project-link {
+            margin-top: 1rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        /* ---- Process ---- */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+            counter-reset: step;
+        }
+        .step {
+            position: relative;
+            padding: 1.5rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        .step::before {
+            counter-increment: step;
+            content: counter(step);
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.85rem;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            margin-bottom: 1rem;
+        }
+        .step h4 {
+            margin-bottom: 0.4rem;
+        }
+        .step p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* ---- About ---- */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 2rem;
+        }
+        .about-text .highlight {
+            background: #fff3e0;
+            padding: 1.25rem 1.5rem;
+            border-left: 4px solid var(--accent);
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin: 1.5rem 0;
+        }
+        .about-text .highlight p {
+            margin: 0;
+            font-style: italic;
+        }
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-weight: 600;
+        }
+
+        /* ---- Contact ---- */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2.5rem;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            background: #fff;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .contact-form input:focus,
+        .contact-form select:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.1);
+        }
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .contact-form button {
+            align-self: flex-start;
+        }
+        .form-status {
+            font-size: 0.9rem;
+            font-weight: 500;
+            min-height: 1.5rem;
+        }
+        .form-status.success {
+            color: #16a34a;
+        }
+        .form-status.error {
+            color: #dc2626;
+        }
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        .contact-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        /* ---- Footer ---- */
+        footer {
+            text-align: center;
+            padding: 2.5rem 0;
+            border-top: 1px solid var(--border);
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        footer a {
+            font-weight: 600;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .footer-links a {
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 0.85rem;
+        }
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        .footer-copyright {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        /* ---- Legal Modal ---- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal {
+            background: #fff;
+            border-radius: var(--radius);
+            max-width: 750px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 2.5rem;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+        .modal-close {
+            position: sticky;
+            top: 0;
+            float: right;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--text-light);
+            line-height: 1;
+            z-index: 10;
+        }
+        .modal-close:hover {
+            color: var(--text);
+        }
+        .modal h2 {
+            margin-bottom: 1.5rem;
+            padding-right: 2rem;
+        }
+        .modal h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+        }
+        .modal p,
+        .modal li {
+            font-size: 0.92rem;
+            color: var(--text-light);
+            margin-bottom: 0.75rem;
+        }
+        .modal ul {
+            margin-left: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        .modal .last-updated {
+            font-size: 0.8rem;
+            color: #999;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+        body.no-scroll {
+            overflow: hidden;
+        }
+
+        /* ---- Responsive ---- */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg);
+                flex-direction: column;
+                padding: 1.5rem;
+                border-bottom: 1px solid var(--border);
+                gap: 1rem;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .hero {
+                padding-top: 6rem;
+            }
+            .about-content,
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 0.5rem;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            .modal {
+                padding: 1.5rem;
+                max-height: 90vh;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== HEADER ========== -->
+    <header id="header">
+        <nav>
+            <a href="#" class="logo">Safari<span>Softwares</span></a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Work</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact" class="btn">Start a Project</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">
+                <span class="dot"></span> Accepting new projects
+            </div>
+            <h1>We build software that solves real business problems</h1>
+            <p>
+                Safari Softwares crafts custom web applications, management systems, and tools that help
+                businesses and organizations streamline operations and work more efficiently.
+            </p>
+            <div>
+                <a href="#contact" class="btn">Let's Talk</a>
+                <a href="#portfolio" class="btn btn-outline">See Our Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SERVICES ========== -->
+    <section id="services">
+        <div class="container">
+            <span class="section-label">What We Do</span>
+            <h2>Services tailored to your needs</h2>
+            <p>We specialize in turning complex requirements into clean, maintainable software.</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🖥️</div>
+                    <h3>Custom Management Systems</h3>
+                    <p>ERP software, hospital managers, rental systems, and loan trackers — built specifically for how you operate.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>Web & Mobile-Ready Applications</h3>
+                    <p>Responsive web apps that work seamlessly on desktop and mobile, from booking platforms to business tools.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔌</div>
+                    <h3>API Development & Integration</h3>
+                    <p>Connecting your systems, automating workflows, and building integrations with third-party services.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎓</div>
+                    <h3>Educational & Exam Prep Tools</h3>
+                    <p>Interactive simulators, practice platforms, and learning tools tailored for Kenyan curricula and professional exams.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🤝</div>
+                    <h3>Technical Consulting</h3>
+                    <p>Not sure what you need? We help define scope, choose the right technology, and create a realistic roadmap.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>Maintenance & Support</h3>
+                    <p>We stand by our work with ongoing support, updates, and improvements as your needs evolve.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PORTFOLIO ========== -->
+    <section id="portfolio">
+        <div class="container">
+            <span class="section-label">Our Work</span>
+            <h2>Real projects, real impact</h2>
+            <p>Each project below is a working system we've built and delivered. Click through to see the code on GitHub.</p>
+            <div class="portfolio-grid">
+
+                <!-- Construction-ERP-Software -->
+                <div class="project-card">
+                    <div class="project-img" style="background:#1e293b; color:#fbbf24;">🏗️</div>
+                    <div class="project-body">
+                        <h3>Construction ERP Software</h3>
+                        <p>A comprehensive enterprise resource planning system for construction companies — project tracking, resource allocation, budgeting, and reporting in one place.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">ERP</span>
+                            <span class="tech-tag">Construction</span>
+                            <span class="tech-tag">Web App</span>
+                        </div>
+                        <a href="https://github.com/safarisoftwares-code/Construction-ERP-Software" target="_blank" rel="noopener" class="project-link">View on GitHub ↗</a>
+                    </div>
+                </div>
+
+                <!-- hospital-manager -->
+                <div class="project-card">
+                    <div class="project-img" style="background:#0f172a; color:#38bdf8;">🏥</div>
+                    <div class="project-body">
+                        <h3>Hospital Manager</h3>
+                        <p>A hospital management system handling patient records, appointments, billing, and staff management — designed for clinics and small hospitals.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Healthcare</span>
+                            <span class="tech-tag">Management</span>
+                            <span class="tech-tag">Web App</span>
+                        </div>
+                        <a href="https://github.com/safarisoftwares-code/hospital-manager" target="_blank" rel="noopener" class="project-link">View on GitHub ↗</a>
+                    </div>
+                </div>
+
+                <!-- loan-manager -->
+                <div class="project-card">
+                    <div class="project-img" style="background:#1a1a2e; color:#e94560;">💰</div>
+                    <div class="project-body">
+                        <h3>Loan Manager</h3>
+                        <p>A loan tracking and management system with borrower records, repayment schedules, interest calculations, and automated reminders.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Fintech</span>
+                            <span class="tech-tag">Loans</span>
+                            <span class="tech-tag">Web App</span>
+                        </div>
+                        <a href="https://github.com/safarisoftwares-code/loan-manager" target="_blank" rel="noopener" class="project-link">View on GitHub ↗</a>
+                    </div>
+                </div>
+
+                <!-- equipment-rental-manager -->
+                <div class="project-card">
+                    <div class="project-img" style="background:#0d3b66; color:#f4d35e;">🔧</div>
+                    <div class="project-body">
+                        <h3>Equipment Rental Manager</h3>
+                        <p>A system for managing equipment rental businesses — inventory tracking, booking calendar, customer management, and rental history.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Rental</span>
+                            <span class="tech-tag">Inventory</span>
+                            <span class="tech-tag">Web App</span>
+                        </div>
+                        <a href="https://github.com/safarisoftwares-code/equipment-rental-manager" target="_blank" rel="noopener" class="project-link">View on GitHub ↗</a>
+                    </div>
+                </div>
+
+                <!-- Cleantex-Dry-Cleaners -->
+                <div class="project-card">
+                    <div class="project-img" style="background:#064e3b; color:#6ee7b7;">👔</div>
+                    <div class="project-body">
+                        <h3>Cleantex Dry Cleaners</h3>
+                        <p>A management system for a dry cleaning business — order tracking, customer notifications, pickup/delivery scheduling, and invoicing.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Business</span>
+                            <span class="tech-tag">POS</span>
+                            <span class="tech-tag">Web App</span>
+                        </div>
+                        <a href="https://github.com/safarisoftwares-code/Cleantex-Dry-Cleaners" target="_blank" rel="noopener" class="project-link">View on GitHub ↗</a>
+                    </div>
+                </div>
+
+                <!-- The-Ngili-Calendar -->
+                <div class="project-card">
+                    <div class="project-img" style="background:#7c2d12; color:#fdba74;">📅</div>
+                    <div class="project-body">
+                        <h3>The Ngili Calendar</h3>
+                        <p>A custom calendar and scheduling application with event management, reminders, and a clean interface for personal or organizational use.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Calendar</span>
+                            <span class="tech-tag">Scheduling</span>
+                            <span class="tech-tag">Web App</span>
+                        </div>
+                        <a href="https://github.com/safarisoftwares-code/The-Ngili-Calendar" target="_blank" rel="noopener" class="project-link">View on GitHub ↗</a>
+                    </div>
+                </div>
+
+                <!-- epra-electrician-exam-prep -->
+                <div class="project-card">
+                    <div class="project-img" style="background:#312e81; color:#a5b4fc;">⚡</div>
+                    <div class="project-body">
+                        <h3>EPRA Electrician Exam Prep</h3>
+                        <p>An exam preparation platform for electricians taking the EPRA (Energy and Petroleum Regulatory Authority) certification in Kenya — practice questions, mock exams, and progress tracking.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Education</span>
+                            <span class="tech-tag">Exam Prep</span>
+                            <span class="tech-tag">Kenya</span>
+                        </div>
+                        <a href="https://github.com/safarisoftwares-code/epra-electrician-exam-prep" target="_blank" rel="noopener" class="project-link">View on GitHub ↗</a>
+                    </div>
+                </div>
+
+                <!-- kenyan-chemistry-practical-simulator -->
+                <div class="project-card">
+                    <div class="project-img" style="background:#064e3b; color:#34d399;">🧪</div>
+                    <div class="project-body">
+                        <h3>Kenyan Chemistry Practical Simulator</h3>
+                        <p>An interactive simulator for Kenyan chemistry practical exams — virtual lab experiments, step-by-step procedures, and practice for students.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Education</span>
+                            <span class="tech-tag">Simulation</span>
+                            <span class="tech-tag">Kenya</span>
+                        </div>
+                        <a href="https://github.com/safarisoftwares-code/kenyan-chemistry-practical-simulator" target="_blank" rel="noopener" class="project-link">View on GitHub ↗</a>
+                    </div>
+                </div>
+
+                <!-- Pastors-Sermon-Assistant -->
+                <div class="project-card">
+                    <div class="project-img" style="background:#4a1d6e; color:#d8b4fe;">🙏</div>
+                    <div class="project-body">
+                        <h3>Pastor's Sermon Assistant</h3>
+                        <p>A sermon preparation and organization tool for pastors — scripture references, sermon outlines, illustration library, and preaching schedule management.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Ministry</span>
+                            <span class="tech-tag">Productivity</span>
+                            <span class="tech-tag">Web App</span>
+                        </div>
+                        <a href="https://github.com/safarisoftwares-code/Pastors-Sermon-Assistant" target="_blank" rel="noopener" class="project-link">View on GitHub ↗</a>
+                    </div>
+                </div>
+
+                <!-- wallpaper-manager -->
+                <div class="project-card">
+                    <div class="project-img" style="background:#1e1b4b; color:#c4b5fd;">🖼️</div>
+                    <div class="project-body">
+                        <h3>Wallpaper Manager</h3>
+                        <p>A wallpaper management application — organize, categorize, and manage wallpaper collections with tagging and search functionality.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Media</span>
+                            <span class="tech-tag">Management</span>
+                            <span class="tech-tag">App</span>
+                        </div>
+                        <a href="https://github.com/safarisoftwares-code/wallpaper-manager" target="_blank" rel="noopener" class="project-link">View on GitHub ↗</a>
+                    </div>
+                </div>
+
+                <!-- direct-connection -->
+                <div class="project-card">
+                    <div class="project-img" style="background:#1e293b; color:#94a3b8;">🔗</div>
+                    <div class="project-body">
+                        <h3>Direct Connection</h3>
+                        <p>A networking or connectivity tool enabling direct communication between systems — peer-to-peer connections, data transfer, or messaging functionality.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Networking</span>
+                            <span class="tech-tag">P2P</span>
+                            <span class="tech-tag">Tool</span>
+                        </div>
+                        <a href="https://github.com/safarisoftwares-code/direct-connection" target="_blank" rel="noopener" class="project-link">View on GitHub ↗</a>
+                    </div>
+                </div>
+
+                <!-- memory-game -->
+                <div class="project-card">
+                    <div class="project-img" style="background:#3b0764; color:#e9d5ff;">🧠</div>
+                    <div class="project-body">
+                        <h3>Memory Game</h3>
+                        <p>An interactive memory card matching game — fun, responsive, and built with clean code. A demonstration of front-end development skills.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Game</span>
+                            <span class="tech-tag">Frontend</span>
+                            <span class="tech-tag">Interactive</span>
+                        </div>
+                        <a href="https://github.com/safarisoftwares-code/memory-game" target="_blank" rel="noopener" class="project-link">View on GitHub ↗</a>
+                    </div>
+                </div>
+
+            </div>
+            <p style="margin-top: 2.5rem; text-align: center;">
+                <a href="https://github.com/safarisoftwares-code" target="_blank" rel="noopener" class="github-link">
+                    ⭐ View all 12 repositories on GitHub →
+                </a>
+            </p>
+        </div>
+    </section>
+
+    <!-- ========== PROCESS ========== -->
+    <section id="process" style="background: #fff;">
+        <div class="container">
+            <span class="section-label">How We Work</span>
+            <h2>A process built on clarity and trust</h2>
+            <p>We've refined our approach to deliver results predictably, without the usual headaches.</p>
+            <div class="process-steps">
+                <div class="step">
+                    <h4>Discovery</h4>
+                    <p>We listen. You explain the problem, goals, and constraints. We ask the right questions to uncover what truly needs to be built.</p>
+                </div>
+                <div class="step">
+                    <h4>Proposal</h4>
+                    <p>You get a clear scope document, timeline estimate, and fixed price or retainer proposal. No hidden fees.</p>
+                </div>
+                <div class="step">
+                    <h4>Build & Iterate</h4>
+                    <p>We develop in short cycles. You see progress regularly and can course-correct early. Communication is constant.</p>
+                </div>
+                <div class="step">
+                    <h4>Launch & Support</h4>
+                    <p>We handle deployment, train your team if needed, and provide ongoing maintenance so your software stays healthy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== ABOUT ========== -->
+    <section id="about">
+        <div class="container">
+            <span class="section-label">About Us</span>
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Software built by developers who care</h2>
+                    <p>
+                        Safari Softwares is a focused development team based in Kenya. We build practical,
+                        reliable software for businesses, educational institutions, religious organizations,
+                        and professionals who need tools that work.
+                    </p>
+                    <p>
+                        Our portfolio speaks for itself — we've built ERP systems, hospital management platforms,
+                        loan trackers, exam prep tools, and much more. We write clean, documented code and
+                        transfer knowledge to your team.
+                    </p>
+                    <div class="highlight">
+                        <p>"We believe great software comes from truly understanding the problem before writing a single line of code."</p>
+                    </div>
+                    <p>
+                        Every project we build is version-controlled and accessible on GitHub — transparent development from day one.
+                    </p>
+                    <a href="https://github.com/safarisoftwares-code" target="_blank" rel="noopener" class="btn" style="margin-top:0.5rem;">
+                        View Our GitHub
+                    </a>
+                </div>
+                <div style="text-align:center;">
+                    <div style="width:100%; max-width:380px; height:320px; background:#f0ebe3; border-radius:var(--radius); display:inline-flex; align-items:center; justify-content:center; font-family:var(--font-mono); color:#888;">
+                        🖥️ Team Photo
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTACT ========== -->
+    <section id="contact" style="background: #fff;">
+        <div class="container">
+            <span class="section-label">Get In Touch</span>
+            <h2>Ready to start your project?</h2>
+            <p>Tell us what you need. We'll respond within 24 hours with initial thoughts — no obligation.</p>
+            <div class="contact-wrapper">
+                <form class="contact-form" id="contactForm">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Email Address" required>
+                    <input type="text" name="company" placeholder="Company / Organization (optional)">
+                    <select name="need" required>
+                        <option value="" disabled selected>What best describes your need?</option>
+                        <option value="new">New product from scratch</option>
+                        <option value="improve">Improve or fix an existing system</option>
+                        <option value="erp">ERP / Management system</option>
+                        <option value="education">Educational / Exam prep tool</option>
+                        <option value="automation">Workflow automation</option>
+                        <option value="consulting">Technical consulting / advice</option>
+                        <option value="other">Something else</option>
+                    </select>
+                    <textarea name="message" placeholder="Tell us about your project, timeline, and budget range if you have one..."></textarea>
+                    <button type="submit" class="btn">Send Message</button>
+                    <p class="form-status" id="formStatus"></p>
+                </form>
+                <div class="contact-info">
+                    <div class="contact-info-item">
+                        <span class="contact-icon">📧</span>
+                        <div>
+                            <strong>Email</strong><br>
+                            <a href="mailto:safarisoftwares@gmail.com">safarisoftwares@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <span class="contact-icon">🐙</span>
+                        <div>
+                            <strong>GitHub</strong><br>
+                            <a href="https://github.com/safarisoftwares-code" target="_blank" rel="noopener">github.com/safarisoftwares-code</a>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <span class="contact-icon">📍</span>
+                        <div>
+                            <strong>Location</strong><br>
+                            Kenya (Remote-friendly — we work with clients worldwide)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#" id="openPrivacy">Privacy Policy</a>
+                <a href="#" id="openTerms">Terms of Service</a>
+                <a href="mailto:safarisoftwares@gmail.com">safarisoftwares@gmail.com</a>
+                <a href="https://github.com/safarisoftwares-code" target="_blank" rel="noopener">GitHub</a>
+            </div>
+            <p class="footer-copyright">
+                &copy; <span id="year"></span> Safari Softwares. All rights reserved. All content, code, and materials on this website and in our repositories are the intellectual property of Safari Softwares unless otherwise noted. Unauthorized use, reproduction, or distribution is strictly prohibited.
+            </p>
+        </div>
+    </footer>
+
+    <!-- ========== PRIVACY POLICY MODAL ========== -->
+    <div class="modal-overlay" id="privacyModal">
+        <div class="modal">
+            <button class="modal-close" id="closePrivacy">&times;</button>
+            <h2>Privacy Policy</h2>
+            <p class="last-updated">Last updated: January 2026</p>
+
+            <p>Safari Softwares ("we," "us," or "our") operates the website and services associated with our software development business. This Privacy Policy explains how we collect, use, and protect your information when you interact with us.</p>
+
+            <h3>1. Information We Collect</h3>
+            <p>When you contact us through our website or via email, we may collect:</p>
+            <ul>
+                <li><strong>Contact information</strong> — your name, email address, company name, and phone number (if provided)</li>
+                <li><strong>Project details</strong> — information about your software needs, timeline, and budget that you voluntarily share</li>
+                <li><strong>Communication records</strong> — emails, messages, and any correspondence between you and Safari Softwares</li>
+            </ul>
+            <p>We do <strong>not</strong> collect sensitive personal data (such as financial account details, government IDs, or health information) through this website.</p>
+
+            <h3>2. How We Use Your Information</h3>
+            <p>We use the information you provide solely for:</p>
+            <ul>
+                <li>Responding to your inquiries and communicating about potential projects</li>
+                <li>Providing quotes, proposals, and project-related documentation</li>
+                <li>Delivering the software services you have engaged us for</li>
+                <li>Improving our services and client communication</li>
+            </ul>
+            <p>We do <strong>not</strong> sell, rent, or trade your personal information to third parties. We do not use your data for automated decision-making or profiling.</p>
+
+            <h3>3. Data Storage and Security</h3>
+            <p>Information submitted through our contact form is processed through a secure third-party service (Formspree or equivalent). Email communications are stored in our email system (Gmail/Google Workspace). We take reasonable technical and organizational measures to protect your data against unauthorized access, alteration, or destruction.</p>
+
+            <h3>4. Third-Party Services</h3>
+            <p>We may use the following third-party services in the course of our business:</p>
+            <ul>
+                <li><strong>GitHub</strong> — for code hosting and version control. Please refer to GitHub's privacy policy for information on how they handle data.</li>
+                <li><strong>Formspree</strong> — for processing contact form submissions. Please refer to Formspree's privacy policy.</li>
+                <li><strong>Google Workspace (Gmail)</strong> — for email communication.</li>
+            </ul>
+            <p>These services have their own privacy policies, and we encourage you to review them.</p>
+
+            <h3>5. Data Retention</h3>
+            <p>We retain your contact information and correspondence for as long as necessary to fulfill our business relationship with you, or as required by applicable law. If you become a client, project-related data is retained per our contractual agreements.</p>
+
+            <h3>6. Your Rights</h3>
+            <p>Depending on your jurisdiction (including under Kenya's Data Protection Act, 2019, and the GDPR for EU residents), you may have the right to:</p>
+            <ul>
+                <li>Access the personal data we hold about you</li>
+                <li>Request correction of inaccurate data</li>
+                <li>Request deletion of your data</li>
+                <li>Object to or restrict processing of your data</li>
+                <li>Withdraw consent at any time</li>
+            </ul>
+            <p>To exercise any of these rights, contact us at <a href="mailto:safarisoftwares@gmail.com">safarisoftwares@gmail.com</a>.</p>
+
+            <h3>7. Cookies</h3>
+            <p>This website does not use tracking cookies, analytics cookies, or advertising cookies. We may use essential session cookies if required for form functionality. No personal data is collected through cookies.</p>
+
+            <h3>8. Children's Privacy</h3>
+            <p>Our services are not directed at individuals under the age of 18. We do not knowingly collect data from children.</p>
+
+            <h3>9. Changes to This Policy</h3>
+            <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated "Last updated" date. We encourage you to review this policy periodically.</p>
+
+            <h3>10. Contact Us</h3>
+            <p>If you have any questions about this Privacy Policy or our data practices, please contact us at:</p>
+            <p>
+                <strong>Email:</strong> <a href="mailto:safarisoftwares@gmail.com">safarisoftwares@gmail.com</a><br>
+                <strong>Location:</strong> Kenya
+            </p>
+        </div>
+    </div>
+
+    <!-- ========== TERMS OF SERVICE MODAL ========== -->
+    <div class="modal-overlay" id="termsModal">
+        <div class="modal">
+            <button class="modal-close" id="closeTerms">&times;</button>
+            <h2>Terms of Service</h2>
+            <p class="last-updated">Last updated: January 2026</p>
+
+            <p>These Terms of Service ("Terms") govern your use of the Safari Softwares website and our software development services. By engaging with us, you agree to these Terms.</p>
+
+            <h3>1. Definitions</h3>
+            <ul>
+                <li><strong>"We," "us," "our"</strong> — Safari Softwares and its team members</li>
+                <li><strong>"You," "client"</strong> — the individual or organization engaging our services</li>
+                <li><strong>"Services"</strong> — software development, consulting, maintenance, and related work provided by Safari Softwares</li>
+                <li><strong>"Deliverables"</strong> — code, documentation, designs, and other materials produced as part of a project</li>
+            </ul>
+
+            <h3>2. Services</h3>
+            <p>Safari Softwares provides custom software development services including but not limited to web application development, API development, system integration, technical consulting, and software maintenance. The specific scope, deliverables, timeline, and fees for each project will be outlined in a separate written agreement or proposal accepted by both parties.</p>
+
+            <h3>3. Intellectual Property</h3>
+            <p><strong>Our Code & Website:</strong> All content on this website (safarisoftwares-code.github.io), including text, design, graphics, and the website code itself, is the intellectual property of Safari Softwares and is protected by copyright. Unauthorized reproduction, modification, distribution, or use of any content from this website without our prior written consent is strictly prohibited.</p>
+            <p><strong>Open Source Repositories:</strong> Code published in our public GitHub repositories (<a href="https://github.com/safarisoftwares-code" target="_blank" rel="noopener">github.com/safarisoftwares-code</a>) may be subject to specific open-source licenses as indicated in each repository. Please refer to the LICENSE file in each repository for usage terms.</p>
+            <p><strong>Client Project Deliverables:</strong> Ownership and intellectual property rights for deliverables created for a client will be specified in the project agreement. Unless otherwise agreed in writing, full ownership of custom deliverables transfers to the client upon final payment.</p>
+
+            <h3>4. Client Responsibilities</h3>
+            <p>To enable us to deliver services effectively, you agree to:</p>
+            <ul>
+                <li>Provide clear, accurate project requirements and timely feedback</li>
+                <li>Designate a point of contact for communication during the project</li>
+                <li>Provide necessary access, credentials, or resources required for the project</li>
+                <li>Make payments according to the agreed schedule</li>
+            </ul>
+
+            <h3>5. Payment Terms</h3>
+            <p>Payment terms — including total fees, milestones, payment schedule, and accepted methods — will be detailed in the project proposal or agreement. Unless otherwise stated:</p>
+            <ul>
+                <li>An initial deposit may be required before work begins</li>
+                <li>Invoices are payable within the timeframe specified (typically 14–30 days)</li>
+                <li>Late payments may result in project delays or suspension of work</li>
+            </ul>
+
+            <h3>6. Confidentiality</h3>
+            <p>We treat all client information, project requirements, business data, and communications as confidential. We will not disclose your confidential information to third parties except as necessary to deliver the agreed services (e.g., hosting providers, API services) or as required by law. This obligation survives the termination of our agreement.</p>
+
+            <h3>7. Limitation of Liability</h3>
+            <p>Safari Softwares provides services with reasonable skill and care. However:</p>
+            <ul>
+                <li>We do not guarantee that software will be completely error-free or uninterrupted</li>
+                <li>Our liability for any claim arising from our services is limited to the total fees paid by you for the specific project in question</li>
+                <li>We are not liable for indirect, consequential, or incidental damages, including loss of revenue, data, or business opportunity</li>
+                <li>We are not responsible for issues arising from third-party services, APIs, or platforms integrated into your project</li>
+            </ul>
+
+            <h3>8. Third-Party Links & Services</h3>
+            <p>Our website and projects may contain links to third-party websites (such as GitHub) or integrate with third-party services. We are not responsible for the content, policies, or practices of these third parties. Use of third-party services is at your own risk and subject to their respective terms.</p>
+
+            <h3>9. Project Termination</h3>
+            <p>Either party may terminate a project agreement with written notice. Upon termination:</p>
+            <ul>
+                <li>You will be invoiced for all work completed up to the termination date</li>
+                <li>Any deliverables completed and paid for will be transferred to you</li>
+                <li>Any outstanding invoices remain payable</li>
+                <li>Confidentiality obligations survive termination</li>
+            </ul>
+
+            <h3>10. Website Use</h3>
+            <p>By using this website, you agree not to:</p>
+            <ul>
+                <li>Use the site for any unlawful purpose</li>
+                <li>Attempt to gain unauthorized access to any part of the site or its server</li>
+                <li>Scrape, data-mine, or extract content from the site without permission</li>
+                <li>Submit false or misleading information through our contact form</li>
+            </ul>
+
+            <h3>11. Governing Law</h3>
+            <p>These Terms are governed by the laws of the Republic of Kenya. Any disputes arising from these Terms or our services shall be subject to the exclusive jurisdiction of Kenyan courts.</p>
+
+            <h3>12. Changes to These Terms</h3>
+            <p>We reserve the right to update these Terms at any time. Changes will be posted on this page. Continued use of our website or services after changes constitutes acceptance of the revised Terms. Project-specific terms agreed upon in writing take precedence over these general Terms.</p>
+
+            <h3>13. Contact</h3>
+            <p>For questions about these Terms, contact us at:</p>
+            <p>
+                <strong>Email:</strong> <a href="mailto:safarisoftwares@gmail.com">safarisoftwares@gmail.com</a><br>
+                <strong>Location:</strong> Kenya
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // --- Set current year ---
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // --- Mobile menu toggle ---
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // --- Header shadow on scroll ---
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 20);
+        });
+
+        // --- Legal Modals ---
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.classList.add('no-scroll');
+        }
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        }
+
+        document.getElementById('openPrivacy').addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal('privacyModal');
+        });
+        document.getElementById('openTerms').addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal('termsModal');
+        });
+        document.getElementById('closePrivacy').addEventListener('click', () => {
+            closeModal('privacyModal');
+        });
+        document.getElementById('closeTerms').addEventListener('click', () => {
+            closeModal('termsModal');
+        });
+
+        // Close modal when clicking overlay background
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    overlay.classList.remove('active');
+                    document.body.classList.remove('no-scroll');
+                }
+            });
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal-overlay.active').forEach(overlay => {
+                    overlay.classList.remove('active');
+                    document.body.classList.remove('no-scroll');
+                });
+            }
+        });
+
+        // --- Contact form handling ---
+        const contactForm = document.getElementById('contactForm');
+        const formStatus = document.getElementById('formStatus');
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            formStatus.textContent = 'Sending...';
+            formStatus.className = 'form-status';
+
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData.entries());
+
+            // ⚠️ Replace this URL with your Formspree endpoint (free at formspree.io)
+            const FORM_ENDPOINT = 'https://formspree.io/f/your-form-id-here';
+
+            try {
+                const response = await fetch(FORM_ENDPOINT, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data),
+                });
+
+                if (response.ok) {
+                    formStatus.textContent = '✓ Message sent! We\'ll get back to you within 24 hours.';
+                    formStatus.className = 'form-status success';
+                    contactForm.reset();
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                formStatus.innerHTML =
+                    'Please email us directly at <a href="mailto:safarisoftwares@gmail.com">safarisoftwares@gmail.com</a>';
+                formStatus.className = 'form-status error';
+                console.warn('Form endpoint not configured. Update FORM_ENDPOINT with your Formspree URL.');
+            }
+        });
+    </script>
+</body>
+</html>
