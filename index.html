@@ -20,17 +20,8 @@
             --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
             --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: var(--font-sans);
             background-color: var(--bg);
@@ -38,30 +29,11 @@
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
         }
-
-        /* ---- Typography ---- */
-        h1,
-        h2,
-        h3 {
-            line-height: 1.25;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-        }
-        h1 {
-            font-size: clamp(2.2rem, 5vw, 3.2rem);
-        }
-        h2 {
-            font-size: clamp(1.6rem, 3.5vw, 2.2rem);
-            margin-bottom: 0.5rem;
-        }
-        h3 {
-            font-size: 1.15rem;
-            margin-bottom: 0.3rem;
-        }
-        p {
-            margin-bottom: 1rem;
-            color: var(--text-light);
-        }
+        h1, h2, h3 { line-height: 1.25; font-weight: 700; letter-spacing: -0.02em; }
+        h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); }
+        h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); margin-bottom: 0.5rem; }
+        h3 { font-size: 1.15rem; margin-bottom: 0.3rem; }
+        p { margin-bottom: 1rem; color: var(--text-light); }
         .section-label {
             display: inline-block;
             font-size: 0.8rem;
@@ -80,34 +52,14 @@
             padding-bottom: 0.5rem;
             border-bottom: 2px solid var(--border);
         }
-        a {
-            color: var(--accent);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        a:hover {
-            color: var(--accent-hover);
-        }
-
-        /* ---- Layout ---- */
-        .container {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-        section {
-            padding: 5rem 0;
-        }
-        section:first-of-type {
-            padding-top: 6rem;
-        }
-
-        /* ---- Header / Nav ---- */
+        a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+        a:hover { color: var(--accent-hover); }
+        .container { max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; }
+        section { padding: 5rem 0; }
+        section:first-of-type { padding-top: 6rem; }
         header {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             z-index: 100;
             background: rgba(250, 249, 246, 0.85);
             backdrop-filter: blur(12px);
@@ -116,9 +68,7 @@
             padding: 1rem 0;
             transition: box-shadow 0.3s;
         }
-        header.scrolled {
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
-        }
+        header.scrolled { box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05); }
         nav {
             display: flex;
             justify-content: space-between;
@@ -127,40 +77,20 @@
             margin: 0 auto;
             padding: 0 1.5rem;
         }
-        .logo {
-            font-weight: 800;
-            font-size: 1.2rem;
-            color: var(--text);
-            letter-spacing: -0.01em;
-        }
-        .logo span {
-            color: var(--accent);
-        }
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-        .nav-links a {
-            color: var(--text);
-            font-weight: 500;
-            font-size: 0.95rem;
-            position: relative;
-            padding-bottom: 4px;
-        }
+        .logo { font-weight: 800; font-size: 1.2rem; color: var(--text); letter-spacing: -0.01em; }
+        .logo span { color: var(--accent); }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--text); font-weight: 500; font-size: 0.95rem; position: relative; padding-bottom: 4px; }
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
+            bottom: 0; left: 0;
             width: 0;
             height: 2px;
             background: var(--accent);
             transition: width 0.25s;
         }
-        .nav-links a:hover::after {
-            width: 100%;
-        }
+        .nav-links a:hover::after { width: 100%; }
         .btn {
             display: inline-block;
             background: var(--accent);
@@ -174,53 +104,19 @@
             transition: background 0.2s, transform 0.15s;
             text-decoration: none;
         }
-        .btn:hover {
-            background: var(--accent-hover);
-            transform: translateY(-1px);
-        }
+        .btn:hover { background: var(--accent-hover); transform: translateY(-1px); }
         .btn-outline {
             background: transparent;
             color: var(--text) !important;
             border: 2px solid var(--border);
             margin-left: 0.75rem;
         }
-        .btn-outline:hover {
-            border-color: var(--accent);
-            background: transparent;
-            color: var(--accent) !important;
-        }
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-        .mobile-menu-btn span {
-            display: block;
-            width: 26px;
-            height: 2.5px;
-            background: var(--text);
-            margin: 6px 0;
-            border-radius: 2px;
-            transition: 0.3s;
-        }
-
-        /* ---- Hero ---- */
-        .hero {
-            padding-top: 8rem;
-            padding-bottom: 4rem;
-            text-align: center;
-        }
-        .hero h1 {
-            max-width: 750px;
-            margin: 0 auto 1.25rem;
-        }
-        .hero p {
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            font-size: 1.1rem;
-        }
+        .btn-outline:hover { border-color: var(--accent); background: transparent; color: var(--accent) !important; }
+        .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+        .mobile-menu-btn span { display: block; width: 26px; height: 2.5px; background: var(--text); margin: 6px 0; border-radius: 2px; transition: 0.3s; }
+        .hero { padding-top: 8rem; padding-bottom: 4rem; text-align: center; }
+        .hero h1 { max-width: 750px; margin: 0 auto 1.25rem; }
+        .hero p { max-width: 600px; margin: 0 auto 2rem; font-size: 1.1rem; }
         .hero-badge {
             display: inline-flex;
             align-items: center;
@@ -234,53 +130,13 @@
             color: var(--text-light);
             margin-bottom: 1.5rem;
         }
-        .hero-badge .dot {
-            width: 8px;
-            height: 8px;
-            background: #22c55e;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0%,
-            100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.4;
-            }
-        }
-
-        /* ---- Stats bar ---- */
-        .stats-bar {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-top: 2.5rem;
-            flex-wrap: wrap;
-        }
-        .stat-item {
-            text-align: center;
-        }
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--accent);
-            letter-spacing: -0.02em;
-        }
-        .stat-label {
-            font-size: 0.85rem;
-            color: var(--text-light);
-            font-weight: 500;
-        }
-
-        /* ---- Services ---- */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.75rem;
-            margin-top: 2.5rem;
-        }
+        .hero-badge .dot { width: 8px; height: 8px; background: #22c55e; border-radius: 50%; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+        .stats-bar { display: flex; justify-content: center; gap: 3rem; margin-top: 2.5rem; flex-wrap: wrap; }
+        .stat-item { text-align: center; }
+        .stat-number { font-size: 2rem; font-weight: 800; color: var(--accent); letter-spacing: -0.02em; }
+        .stat-label { font-size: 0.85rem; color: var(--text-light); font-weight: 500; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.75rem; margin-top: 2.5rem; }
         .service-card {
             background: var(--card-bg);
             border: 1px solid var(--border);
@@ -289,22 +145,9 @@
             box-shadow: var(--shadow);
             transition: transform 0.25s, box-shadow 0.25s;
         }
-        .service-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-        .service-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        /* ---- Portfolio ---- */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-top: 1.5rem;
-        }
+        .service-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); }
+        .service-icon { font-size: 2rem; margin-bottom: 1rem; }
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 1.5rem; }
         .project-card {
             background: var(--card-bg);
             border: 1px solid var(--border);
@@ -315,19 +158,12 @@
             display: flex;
             flex-direction: column;
         }
-        .project-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-        .project-card.featured {
-            border: 2px solid var(--accent);
-            position: relative;
-        }
+        .project-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); }
+        .project-card.featured { border: 2px solid var(--accent); position: relative; }
         .project-card.featured::before {
             content: '★ FEATURED';
             position: absolute;
-            top: 12px;
-            right: 12px;
+            top: 12px; right: 12px;
             background: var(--accent);
             color: #fff;
             font-size: 0.65rem;
@@ -347,64 +183,19 @@
             font-size: 2.5rem;
             flex-shrink: 0;
         }
-        .project-body {
-            padding: 1.5rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        .project-body h3 {
-            margin-bottom: 0.25rem;
-        }
-        .project-body p {
-            flex-grow: 1;
-            font-size: 0.92rem;
-        }
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem;
-            margin-top: 1rem;
-        }
-        .tech-tag {
-            background: #f5f0ea;
-            color: var(--text-light);
-            padding: 0.25rem 0.7rem;
-            border-radius: 4px;
-            font-size: 0.78rem;
-            font-weight: 500;
-        }
-        .project-link {
-            margin-top: 1rem;
-            font-weight: 600;
-            font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        /* ---- Process ---- */
-        .process-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2.5rem;
-            counter-reset: step;
-        }
-        .step {
-            position: relative;
-            padding: 1.5rem;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-        }
+        .project-body { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+        .project-body h3 { margin-bottom: 0.25rem; }
+        .project-body p { flex-grow: 1; font-size: 0.92rem; }
+        .tech-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+        .tech-tag { background: #f5f0ea; color: var(--text-light); padding: 0.25rem 0.7rem; border-radius: 4px; font-size: 0.78rem; font-weight: 500; }
+        .project-link { margin-top: 1rem; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.3rem; }
+        .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; counter-reset: step; }
+        .step { position: relative; padding: 1.5rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
         .step::before {
             counter-increment: step;
             content: counter(step);
             display: inline-block;
-            width: 32px;
-            height: 32px;
+            width: 32px; height: 32px;
             background: var(--accent);
             color: #fff;
             font-weight: 700;
@@ -414,22 +205,9 @@
             line-height: 32px;
             margin-bottom: 1rem;
         }
-        .step h4 {
-            margin-bottom: 0.4rem;
-        }
-        .step p {
-            font-size: 0.9rem;
-            margin: 0;
-        }
-
-        /* ---- About ---- */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-            margin-top: 2rem;
-        }
+        .step h4 { margin-bottom: 0.4rem; }
+        .step p { font-size: 0.9rem; margin: 0; }
+        .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-top: 2rem; }
         .about-text .highlight {
             background: #fff3e0;
             padding: 1.25rem 1.5rem;
@@ -437,32 +215,11 @@
             border-radius: 0 var(--radius) var(--radius) 0;
             margin: 1.5rem 0;
         }
-        .about-text .highlight p {
-            margin: 0;
-            font-style: italic;
-        }
-        .github-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-weight: 600;
-        }
-
-        /* ---- Contact ---- */
-        .contact-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-top: 2.5rem;
-        }
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        .contact-form input,
-        .contact-form select,
-        .contact-form textarea {
+        .about-text .highlight p { margin: 0; font-style: italic; }
+        .github-link { display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 600; }
+        .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2.5rem; }
+        .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+        .contact-form input, .contact-form select, .contact-form textarea {
             width: 100%;
             padding: 0.85rem 1rem;
             border: 1px solid var(--border);
@@ -472,67 +229,26 @@
             background: #fff;
             transition: border-color 0.2s, box-shadow 0.2s;
         }
-        .contact-form input:focus,
-        .contact-form select:focus,
-        .contact-form textarea:focus {
+        .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus {
             outline: none;
             border-color: var(--accent);
             box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.1);
         }
-        .contact-form textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-        .contact-form button {
-            align-self: flex-start;
-        }
-        .form-status {
-            font-size: 0.9rem;
-            font-weight: 500;
-            min-height: 1.5rem;
-        }
-        .form-status.success {
-            color: #16a34a;
-        }
-        .form-status.error {
-            color: #dc2626;
-        }
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            justify-content: center;
-        }
-        .contact-info-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-        }
-        .contact-icon {
-            font-size: 1.5rem;
-            flex-shrink: 0;
-        }
-
-        /* ---- Footer ---- */
-        footer {
-            text-align: center;
-            padding: 2.5rem 0;
-            border-top: 1px solid var(--border);
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-        footer a {
-            font-weight: 600;
-        }
-
-        /* ---- Responsive ---- */
+        .contact-form textarea { resize: vertical; min-height: 120px; }
+        .contact-form button { align-self: flex-start; }
+        .form-status { font-size: 0.9rem; font-weight: 500; min-height: 1.5rem; }
+        .form-status.success { color: #16a34a; }
+        .form-status.error { color: #dc2626; }
+        .contact-info { display: flex; flex-direction: column; gap: 1.5rem; justify-content: center; }
+        .contact-info-item { display: flex; align-items: flex-start; gap: 1rem; }
+        .contact-icon { font-size: 1.5rem; flex-shrink: 0; }
+        footer { text-align: center; padding: 2.5rem 0; border-top: 1px solid var(--border); font-size: 0.9rem; color: var(--text-light); }
+        footer a { font-weight: 600; }
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
                 position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
+                top: 100%; left: 0; right: 0;
                 background: var(--bg);
                 flex-direction: column;
                 padding: 1.5rem;
@@ -540,36 +256,19 @@
                 gap: 1rem;
                 box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
             }
-            .nav-links.active {
-                display: flex;
-            }
-            .mobile-menu-btn {
-                display: block;
-            }
-            .hero {
-                padding-top: 6rem;
-            }
-            .about-content,
-            .contact-wrapper {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            .btn-outline {
-                margin-left: 0;
-                margin-top: 0.5rem;
-            }
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-            .stats-bar {
-                gap: 1.5rem;
-            }
+            .nav-links.active { display: flex; }
+            .mobile-menu-btn { display: block; }
+            .hero { padding-top: 6rem; }
+            .about-content, .contact-wrapper { grid-template-columns: 1fr; gap: 2rem; }
+            .btn-outline { margin-left: 0; margin-top: 0.5rem; }
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .stats-bar { gap: 1.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ========== HEADER ========== -->
+    <!-- HEADER -->
     <header id="header">
         <nav>
             <a href="#" class="logo">Safari<span>Softwares</span></a>
@@ -586,316 +285,193 @@
         </nav>
     </header>
 
-    <!-- ========== HERO ========== -->
+    <!-- HERO -->
     <section class="hero">
         <div class="container">
-            <div class="hero-badge">
-                <span class="dot"></span> Accepting new projects
-            </div>
+            <div class="hero-badge"><span class="dot"></span> Accepting new projects</div>
             <h1>We build software and AI solutions that solve real problems</h1>
-            <p>
-                Safari Softwares crafts custom web applications, AI agents, ERP systems, and management tools
-                that help businesses and organizations work smarter.
-            </p>
+            <p>Safari Softwares crafts custom web applications, AI agents, ERP systems, and management tools that help businesses and organizations work smarter.</p>
             <div>
                 <a href="#contact" class="btn">Let's Talk</a>
                 <a href="#portfolio" class="btn btn-outline">See Our Work</a>
             </div>
             <div class="stats-bar">
-                <div class="stat-item">
-                    <div class="stat-number">15+</div>
-                    <div class="stat-label">Projects Built</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">6+</div>
-                    <div class="stat-label">Industries Served</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Open Source</div>
-                </div>
+                <div class="stat-item"><div class="stat-number">15+</div><div class="stat-label">Projects Built</div></div>
+                <div class="stat-item"><div class="stat-number">6+</div><div class="stat-label">Industries Served</div></div>
+                <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">Open Source</div></div>
             </div>
         </div>
     </section>
 
-    <!-- ========== SERVICES ========== -->
+    <!-- SERVICES -->
     <section id="services">
         <div class="container">
             <span class="section-label">What We Do</span>
             <h2>Services tailored to your needs</h2>
             <p>We specialize in turning complex requirements into clean, maintainable software.</p>
             <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🤖</div>
-                    <h3>AI Agents & Chatbots</h3>
-                    <p>Custom AI-powered agents with advanced reasoning, web search, document processing, voice input, and API integration — built with FastAPI and modern LLMs.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🖥️</div>
-                    <h3>Custom Management Systems</h3>
-                    <p>ERP software, hospital managers, rental systems, loan trackers, and business-specific tools — built exactly for how you operate.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">📱</div>
-                    <h3>Web Applications</h3>
-                    <p>Responsive, production-ready web apps with authentication, dashboards, and admin panels that work seamlessly on any device.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🔌</div>
-                    <h3>API Development & Integration</h3>
-                    <p>Connecting your systems, building RESTful and GraphQL APIs, and integrating with third-party services and payment gateways.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🎓</div>
-                    <h3>Educational & Exam Prep Tools</h3>
-                    <p>Interactive simulators, practice platforms, and learning tools tailored for Kenyan curricula and professional certification exams.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🔧</div>
-                    <h3>Consulting & Support</h3>
-                    <p>Not sure what you need? We help define scope, choose the right technology, and provide ongoing maintenance and support.</p>
-                </div>
+                <div class="service-card"><div class="service-icon">🤖</div><h3>AI Agents & Chatbots</h3><p>Custom AI-powered agents with advanced reasoning, web search, document processing, voice input, and API integration — built with FastAPI and modern LLMs.</p></div>
+                <div class="service-card"><div class="service-icon">🖥️</div><h3>Custom Management Systems</h3><p>ERP software, hospital managers, rental systems, loan trackers, and business-specific tools — built exactly for how you operate.</p></div>
+                <div class="service-card"><div class="service-icon">📱</div><h3>Web Applications</h3><p>Responsive, production-ready web apps with authentication, dashboards, and admin panels that work seamlessly on any device.</p></div>
+                <div class="service-card"><div class="service-icon">🔌</div><h3>API Development & Integration</h3><p>Connecting your systems, building RESTful APIs, and integrating with third-party services and payment gateways.</p></div>
+                <div class="service-card"><div class="service-icon">🎓</div><h3>Educational & Exam Prep Tools</h3><p>Interactive simulators, practice platforms, and learning tools tailored for Kenyan curricula and professional certification exams.</p></div>
+                <div class="service-card"><div class="service-icon">🔧</div><h3>Consulting & Support</h3><p>Not sure what you need? We help define scope, choose the right technology, and provide ongoing maintenance and support.</p></div>
             </div>
         </div>
     </section>
 
-    <!-- ========== PORTFOLIO ========== -->
+    <!-- PORTFOLIO -->
     <section id="portfolio">
         <div class="container">
             <span class="section-label">Our Work</span>
             <h2>Real projects, real impact</h2>
             <p>Each project below is a working system we've built. Click through to see the code on GitHub.</p>
 
-            <!-- ---- AI & Advanced ---- -->
+            <!-- AI & Advanced -->
             <span class="subsection-label">🤖 AI & Advanced Solutions</span>
             <div class="portfolio-grid">
-
-                <!-- safari-ai-pro (FEATURED) -->
                 <div class="project-card featured">
                     <div class="project-img" style="background:#1e1b4b; color:#c4b5fd;">🦁</div>
                     <div class="project-body">
                         <h3>Safari AI Pro</h3>
                         <p>A professional, modular AI agent with advanced reasoning, multi-source web search, voice input, document upload (PDF/DOCX), JWT authentication, server-side guest limits, multi-chat tabs, admin panel, and user dashboard. Production-ready.</p>
                         <div class="tech-tags">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">FastAPI</span>
-                            <span class="tech-tag">SQLAlchemy</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">JWT Auth</span>
-                            <span class="tech-tag">AI/LLM</span>
+                            <span class="tech-tag">Python</span><span class="tech-tag">FastAPI</span><span class="tech-tag">SQLAlchemy</span><span class="tech-tag">JavaScript</span><span class="tech-tag">JWT Auth</span><span class="tech-tag">AI/LLM</span>
                         </div>
                         <a href="https://github.com/safarisoftwares-code/safari-ai-pro" target="_blank" rel="noopener" class="project-link">View on GitHub ↗</a>
                     </div>
                 </div>
-
-                <!-- safari-ai-agent -->
                 <div class="project-card">
                     <div class="project-img" style="background:#0f172a; color:#38bdf8;">🤖</div>
                     <div class="project-body">
                         <h3>Safari AI Agent</h3>
                         <p>A professional AI-powered chatbot agent for data retrieval, web search, and API integration. Built with Python for seamless AI interactions.</p>
                         <div class="tech-tags">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">AI</span>
-                            <span class="tech-tag">Chatbot</span>
-                            <span class="tech-tag">API Integration</span>
-                            <span class="tech-tag">Web Search</span>
+                            <span class="tech-tag">Python</span><span class="tech-tag">AI</span><span class="tech-tag">Chatbot</span><span class="tech-tag">API Integration</span><span class="tech-tag">Web Search</span>
                         </div>
                         <a href="https://github.com/safarisoftwares-code/safari-ai-agent" target="_blank" rel="noopener" class="project-link">View on GitHub ↗</a>
                     </div>
                 </div>
             </div>
 
-            <!-- ---- Management Systems ---- -->
+            <!-- Management Systems -->
             <span class="subsection-label">🏢 Management Systems & ERPs</span>
             <div class="portfolio-grid">
-
-                <!-- Construction-ERP-Software -->
                 <div class="project-card">
                     <div class="project-img" style="background:#1e293b; color:#fbbf24;">🏗️</div>
                     <div class="project-body">
                         <h3>Construction ERP Software</h3>
                         <p>A comprehensive enterprise resource planning system for construction companies — project tracking, resource allocation, budgeting, and reporting in one place.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">ERP</span>
-                            <span class="tech-tag">Construction</span>
-                            <span class="tech-tag">Web App</span>
-                        </div>
+                        <div class="tech-tags"><span class="tech-tag">ERP</span><span class="tech-tag">Construction</span><span class="tech-tag">Web App</span></div>
                         <a href="https://github.com/safarisoftwares-code/Construction-ERP-Software" target="_blank" rel="noopener" class="project-link">View on GitHub ↗</a>
                     </div>
                 </div>
-
-                <!-- hospital-manager -->
                 <div class="project-card">
                     <div class="project-img" style="background:#0f172a; color:#38bdf8;">🏥</div>
                     <div class="project-body">
                         <h3>Hospital Manager</h3>
                         <p>A hospital management system handling patient records, appointments, billing, and staff management — designed for clinics and small hospitals.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Healthcare</span>
-                            <span class="tech-tag">Management</span>
-                            <span class="tech-tag">Web App</span>
-                        </div>
+                        <div class="tech-tags"><span class="tech-tag">Healthcare</span><span class="tech-tag">Management</span><span class="tech-tag">Web App</span></div>
                         <a href="https://github.com/safarisoftwares-code/hospital-manager" target="_blank" rel="noopener" class="project-link">View on GitHub ↗</a>
                     </div>
                 </div>
-
-                <!-- loan-manager -->
                 <div class="project-card">
                     <div class="project-img" style="background:#1a1a2e; color:#e94560;">💰</div>
                     <div class="project-body">
                         <h3>Loan Manager</h3>
                         <p>A loan tracking and management system with borrower records, repayment schedules, interest calculations, and automated reminders.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Fintech</span>
-                            <span class="tech-tag">Loans</span>
-                            <span class="tech-tag">Web App</span>
-                        </div>
+                        <div class="tech-tags"><span class="tech-tag">Fintech</span><span class="tech-tag">Loans</span><span class="tech-tag">Web App</span></div>
                         <a href="https://github.com/safarisoftwares-code/loan-manager" target="_blank" rel="noopener" class="project-link">View on GitHub ↗</a>
                     </div>
                 </div>
-
-                <!-- equipment-rental-manager -->
                 <div class="project-card">
                     <div class="project-img" style="background:#0d3b66; color:#f4d35e;">🔧</div>
                     <div class="project-body">
                         <h3>Equipment Rental Manager</h3>
                         <p>A system for managing equipment rental businesses — inventory tracking, booking calendar, customer management, and rental history.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Rental</span>
-                            <span class="tech-tag">Inventory</span>
-                            <span class="tech-tag">Web App</span>
-                        </div>
+                        <div class="tech-tags"><span class="tech-tag">Rental</span><span class="tech-tag">Inventory</span><span class="tech-tag">Web App</span></div>
                         <a href="https://github.com/safarisoftwares-code/equipment-rental-manager" target="_blank" rel="noopener" class="project-link">View on GitHub ↗</a>
                     </div>
                 </div>
-
-                <!-- Cleantex-Dry-Cleaners -->
                 <div class="project-card">
                     <div class="project-img" style="background:#064e3b; color:#6ee7b7;">👔</div>
                     <div class="project-body">
                         <h3>Cleantex Dry Cleaners</h3>
                         <p>A management system for a dry cleaning business — order tracking, customer notifications, pickup/delivery scheduling, and invoicing.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Business</span>
-                            <span class="tech-tag">POS</span>
-                            <span class="tech-tag">Web App</span>
-                        </div>
+                        <div class="tech-tags"><span class="tech-tag">Business</span><span class="tech-tag">POS</span><span class="tech-tag">Web App</span></div>
                         <a href="https://github.com/safarisoftwares-code/Cleantex-Dry-Cleaners" target="_blank" rel="noopener" class="project-link">View on GitHub ↗</a>
                     </div>
                 </div>
-
-                <!-- The-Ngili-Calendar -->
                 <div class="project-card">
                     <div class="project-img" style="background:#7c2d12; color:#fdba74;">📅</div>
                     <div class="project-body">
                         <h3>The Ngili Calendar</h3>
                         <p>A custom calendar and scheduling application with event management, reminders, and a clean interface for personal or organizational use.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Calendar</span>
-                            <span class="tech-tag">Scheduling</span>
-                            <span class="tech-tag">Web App</span>
-                        </div>
+                        <div class="tech-tags"><span class="tech-tag">Calendar</span><span class="tech-tag">Scheduling</span><span class="tech-tag">Web App</span></div>
                         <a href="https://github.com/safarisoftwares-code/The-Ngili-Calendar" target="_blank" rel="noopener" class="project-link">View on GitHub ↗</a>
                     </div>
                 </div>
             </div>
 
-            <!-- ---- Educational Tools ---- -->
+            <!-- Educational Tools -->
             <span class="subsection-label">🎓 Educational & Exam Prep</span>
             <div class="portfolio-grid">
-
-                <!-- epra-electrician-exam-prep -->
                 <div class="project-card">
                     <div class="project-img" style="background:#312e81; color:#a5b4fc;">⚡</div>
                     <div class="project-body">
                         <h3>EPRA Electrician Exam Prep</h3>
-                        <p>An exam preparation platform for electricians taking the EPRA (Energy and Petroleum Regulatory Authority) certification in Kenya — practice questions, mock exams, and progress tracking.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Education</span>
-                            <span class="tech-tag">Exam Prep</span>
-                            <span class="tech-tag">Kenya</span>
-                        </div>
+                        <p>An exam preparation platform for electricians taking the EPRA certification in Kenya — practice questions, mock exams, and progress tracking.</p>
+                        <div class="tech-tags"><span class="tech-tag">Education</span><span class="tech-tag">Exam Prep</span><span class="tech-tag">Kenya</span></div>
                         <a href="https://github.com/safarisoftwares-code/epra-electrician-exam-prep" target="_blank" rel="noopener" class="project-link">View on GitHub ↗</a>
                     </div>
                 </div>
-
-                <!-- kenyan-chemistry-practical-simulator -->
                 <div class="project-card">
                     <div class="project-img" style="background:#064e3b; color:#34d399;">🧪</div>
                     <div class="project-body">
                         <h3>Kenyan Chemistry Practical Simulator</h3>
                         <p>An interactive simulator for Kenyan chemistry practical exams — virtual lab experiments, step-by-step procedures, and practice for students.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Education</span>
-                            <span class="tech-tag">Simulation</span>
-                            <span class="tech-tag">Kenya</span>
-                        </div>
+                        <div class="tech-tags"><span class="tech-tag">Education</span><span class="tech-tag">Simulation</span><span class="tech-tag">Kenya</span></div>
                         <a href="https://github.com/safarisoftwares-code/kenyan-chemistry-practical-simulator" target="_blank" rel="noopener" class="project-link">View on GitHub ↗</a>
                     </div>
                 </div>
-
-                <!-- Pastors-Sermon-Assistant -->
                 <div class="project-card">
                     <div class="project-img" style="background:#4a1d6e; color:#d8b4fe;">🙏</div>
                     <div class="project-body">
                         <h3>Pastor's Sermon Assistant</h3>
                         <p>A sermon preparation and organization tool for pastors — scripture references, sermon outlines, illustration library, and preaching schedule management.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Ministry</span>
-                            <span class="tech-tag">Productivity</span>
-                            <span class="tech-tag">Web App</span>
-                        </div>
+                        <div class="tech-tags"><span class="tech-tag">Ministry</span><span class="tech-tag">Productivity</span><span class="tech-tag">Web App</span></div>
                         <a href="https://github.com/safarisoftwares-code/Pastors-Sermon-Assistant" target="_blank" rel="noopener" class="project-link">View on GitHub ↗</a>
                     </div>
                 </div>
             </div>
 
-            <!-- ---- Other Projects ---- -->
+            <!-- Other Projects -->
             <span class="subsection-label">🛠️ Other Projects</span>
             <div class="portfolio-grid">
-
-                <!-- wallpaper-manager -->
                 <div class="project-card">
                     <div class="project-img" style="background:#1e1b4b; color:#c4b5fd;">🖼️</div>
                     <div class="project-body">
                         <h3>Wallpaper Manager</h3>
                         <p>A wallpaper management application — organize, categorize, and manage wallpaper collections with tagging and search functionality.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Media</span>
-                            <span class="tech-tag">Management</span>
-                            <span class="tech-tag">App</span>
-                        </div>
+                        <div class="tech-tags"><span class="tech-tag">Media</span><span class="tech-tag">Management</span><span class="tech-tag">App</span></div>
                         <a href="https://github.com/safarisoftwares-code/wallpaper-manager" target="_blank" rel="noopener" class="project-link">View on GitHub ↗</a>
                     </div>
                 </div>
-
-                <!-- direct-connection -->
                 <div class="project-card">
                     <div class="project-img" style="background:#1e293b; color:#94a3b8;">🔗</div>
                     <div class="project-body">
                         <h3>Direct Connection</h3>
                         <p>A networking or connectivity tool enabling direct communication between systems — peer-to-peer connections, data transfer, or messaging functionality.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Networking</span>
-                            <span class="tech-tag">P2P</span>
-                            <span class="tech-tag">Tool</span>
-                        </div>
+                        <div class="tech-tags"><span class="tech-tag">Networking</span><span class="tech-tag">P2P</span><span class="tech-tag">Tool</span></div>
                         <a href="https://github.com/safarisoftwares-code/direct-connection" target="_blank" rel="noopener" class="project-link">View on GitHub ↗</a>
                     </div>
                 </div>
-
-                <!-- memory-game -->
                 <div class="project-card">
                     <div class="project-img" style="background:#3b0764; color:#e9d5ff;">🧠</div>
                     <div class="project-body">
                         <h3>Memory Game</h3>
                         <p>An interactive memory card matching game — fun, responsive, and built with clean code. A demonstration of front-end development skills.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Game</span>
-                            <span class="tech-tag">Frontend</span>
-                            <span class="tech-tag">Interactive</span>
-                        </div>
+                        <div class="tech-tags"><span class="tech-tag">Game</span><span class="tech-tag">Frontend</span><span class="tech-tag">Interactive</span></div>
                         <a href="https://github.com/safarisoftwares-code/memory-game" target="_blank" rel="noopener" class="project-link">View on GitHub ↗</a>
                     </div>
                 </div>
@@ -909,70 +485,42 @@
         </div>
     </section>
 
-    <!-- ========== PROCESS ========== -->
+    <!-- PROCESS -->
     <section id="process" style="background: #fff;">
         <div class="container">
             <span class="section-label">How We Work</span>
             <h2>A process built on clarity and trust</h2>
             <p>We've refined our approach to deliver results predictably, without the usual headaches.</p>
             <div class="process-steps">
-                <div class="step">
-                    <h4>Discovery</h4>
-                    <p>We listen. You explain the problem, goals, and constraints. We ask the right questions to uncover what truly needs to be built.</p>
-                </div>
-                <div class="step">
-                    <h4>Proposal</h4>
-                    <p>You get a clear scope document, timeline estimate, and fixed price or retainer proposal. No hidden fees.</p>
-                </div>
-                <div class="step">
-                    <h4>Build & Iterate</h4>
-                    <p>We develop in short cycles. You see progress regularly and can course-correct early. Communication is constant.</p>
-                </div>
-                <div class="step">
-                    <h4>Launch & Support</h4>
-                    <p>We handle deployment, train your team if needed, and provide ongoing maintenance so your software stays healthy.</p>
-                </div>
+                <div class="step"><h4>Discovery</h4><p>We listen. You explain the problem, goals, and constraints. We ask the right questions to uncover what truly needs to be built.</p></div>
+                <div class="step"><h4>Proposal</h4><p>You get a clear scope document, timeline estimate, and fixed price or retainer proposal. No hidden fees.</p></div>
+                <div class="step"><h4>Build & Iterate</h4><p>We develop in short cycles. You see progress regularly and can course-correct early. Communication is constant.</p></div>
+                <div class="step"><h4>Launch & Support</h4><p>We handle deployment, train your team if needed, and provide ongoing maintenance so your software stays healthy.</p></div>
             </div>
         </div>
     </section>
 
-    <!-- ========== ABOUT ========== -->
+    <!-- ABOUT -->
     <section id="about">
         <div class="container">
             <span class="section-label">About Us</span>
             <div class="about-content">
                 <div class="about-text">
                     <h2>Software built by developers who care</h2>
-                    <p>
-                        Safari Softwares is a focused development team based in Kenya. We build practical,
-                        reliable software and AI solutions for businesses, educational institutions,
-                        religious organizations, and professionals who need tools that work.
-                    </p>
-                    <p>
-                        Our portfolio spans ERP systems, hospital management platforms, loan trackers,
-                        exam prep tools, and advanced AI agents with reasoning and document processing capabilities.
-                        We write clean, documented code and transfer knowledge to your team.
-                    </p>
-                    <div class="highlight">
-                        <p>"We believe great software comes from truly understanding the problem before writing a single line of code."</p>
-                    </div>
-                    <p>
-                        Every project we build is version-controlled and accessible on GitHub — transparent development from day one.
-                    </p>
-                    <a href="https://github.com/safarisoftwares-code" target="_blank" rel="noopener" class="btn" style="margin-top:0.5rem;">
-                        View Our GitHub
-                    </a>
+                    <p>Safari Softwares is a focused development team based in Kenya. We build practical, reliable software and AI solutions for businesses, educational institutions, religious organizations, and professionals who need tools that work.</p>
+                    <p>Our portfolio spans ERP systems, hospital management platforms, loan trackers, exam prep tools, and advanced AI agents with reasoning and document processing capabilities. We write clean, documented code and transfer knowledge to your team.</p>
+                    <div class="highlight"><p>"We believe great software comes from truly understanding the problem before writing a single line of code."</p></div>
+                    <p>Every project we build is version-controlled and accessible on GitHub — transparent development from day one.</p>
+                    <a href="https://github.com/safarisoftwares-code" target="_blank" rel="noopener" class="btn" style="margin-top:0.5rem;">View Our GitHub</a>
                 </div>
                 <div style="text-align:center;">
-                    <div style="width:100%; max-width:380px; height:320px; background:#f0ebe3; border-radius:var(--radius); display:inline-flex; align-items:center; justify-content:center; font-family:var(--font-mono); color:#888;">
-                        🖥️ Team Photo
-                    </div>
+                    <div style="width:100%; max-width:380px; height:320px; background:#f0ebe3; border-radius:var(--radius); display:inline-flex; align-items:center; justify-content:center; font-family:var(--font-mono); color:#888;">🖥️ Team Photo</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ========== CONTACT ========== -->
+    <!-- CONTACT -->
     <section id="contact" style="background: #fff;">
         <div class="container">
             <span class="section-label">Get In Touch</span>
@@ -999,33 +547,15 @@
                     <p class="form-status" id="formStatus"></p>
                 </form>
                 <div class="contact-info">
-                    <div class="contact-info-item">
-                        <span class="contact-icon">📧</span>
-                        <div>
-                            <strong>Email</strong><br>
-                            <a href="mailto:safarisoftwares@gmail.com">safarisoftwares@gmail.com</a>
-                        </div>
-                    </div>
-                    <div class="contact-info-item">
-                        <span class="contact-icon">🐙</span>
-                        <div>
-                            <strong>GitHub</strong><br>
-                            <a href="https://github.com/safarisoftwares-code" target="_blank" rel="noopener">github.com/safarisoftwares-code</a>
-                        </div>
-                    </div>
-                    <div class="contact-info-item">
-                        <span class="contact-icon">📍</span>
-                        <div>
-                            <strong>Location</strong><br>
-                            Kenya (Remote-friendly — we work with clients worldwide)
-                        </div>
-                    </div>
+                    <div class="contact-info-item"><span class="contact-icon">📧</span><div><strong>Email</strong><br><a href="mailto:safarisoftwares@gmail.com">safarisoftwares@gmail.com</a></div></div>
+                    <div class="contact-info-item"><span class="contact-icon">🐙</span><div><strong>GitHub</strong><br><a href="https://github.com/safarisoftwares-code" target="_blank" rel="noopener">github.com/safarisoftwares-code</a></div></div>
+                    <div class="contact-info-item"><span class="contact-icon">📍</span><div><strong>Location</strong><br>Kenya (Remote-friendly — we work with clients worldwide)</div></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ========== FOOTER ========== -->
+    <!-- FOOTER -->
     <footer>
         <div class="container">
             <p>&copy; <span id="year"></span> Safari Softwares. All rights reserved. &nbsp;|&nbsp;
@@ -1036,49 +566,30 @@
     </footer>
 
     <script>
-        // --- Set current year ---
         document.getElementById('year').textContent = new Date().getFullYear();
-
-        // --- Mobile menu toggle ---
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const navLinks = document.getElementById('navLinks');
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+        mobileMenuBtn.addEventListener('click', () => { navLinks.classList.toggle('active'); });
         navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
+            link.addEventListener('click', () => { navLinks.classList.remove('active'); });
         });
-
-        // --- Header shadow on scroll ---
         const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            header.classList.toggle('scrolled', window.scrollY > 20);
-        });
-
-        // --- Contact form handling ---
+        window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 20); });
         const contactForm = document.getElementById('contactForm');
         const formStatus = document.getElementById('formStatus');
-
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             formStatus.textContent = 'Sending...';
             formStatus.className = 'form-status';
-
             const formData = new FormData(contactForm);
             const data = Object.fromEntries(formData.entries());
-
-            // ⚠️ Replace this URL with your Formspree endpoint (free at formspree.io)
             const FORM_ENDPOINT = 'https://formspree.io/f/your-form-id-here';
-
             try {
                 const response = await fetch(FORM_ENDPOINT, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data),
                 });
-
                 if (response.ok) {
                     formStatus.textContent = '✓ Message sent! We\'ll get back to you within 24 hours.';
                     formStatus.className = 'form-status success';
@@ -1087,10 +598,9 @@
                     throw new Error('Form submission failed');
                 }
             } catch (error) {
-                formStatus.innerHTML =
-                    'Please email us directly at <a href="mailto:safarisoftwares@gmail.com">safarisoftwares@gmail.com</a>';
+                formStatus.innerHTML = 'Please email us directly at <a href="mailto:safarisoftwares@gmail.com">safarisoftwares@gmail.com</a>';
                 formStatus.className = 'form-status error';
-                console.warn('Form endpoint not configured. Update FORM_ENDPOINT with your Formspree URL.');
+                console.warn('Form endpoint not configured.');
             }
         });
     </script>
