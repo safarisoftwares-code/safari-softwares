@@ -188,7 +188,8 @@
         .project-body p { flex-grow: 1; font-size: 0.92rem; }
         .tech-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
         .tech-tag { background: #f5f0ea; color: var(--text-light); padding: 0.25rem 0.7rem; border-radius: 4px; font-size: 0.78rem; font-weight: 500; }
-        .project-link { margin-top: 1rem; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.3rem; }
+        .project-links { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem; }
+        .project-link { font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.3rem; }
         .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; counter-reset: step; }
         .step { position: relative; padding: 1.5rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
         .step::before {
@@ -325,7 +326,7 @@
         <div class="container">
             <span class="section-label">Our Work</span>
             <h2>Real projects, real impact</h2>
-            <p>Each project below is a working system we've built. Click through to see the code on GitHub.</p>
+            <p>Each project below is a working system we've built. Click through to see the code on GitHub or visit the live site.</p>
 
             <!-- AI & Advanced -->
             <span class="subsection-label">🤖 AI & Advanced Solutions</span>
@@ -338,7 +339,10 @@
                         <div class="tech-tags">
                             <span class="tech-tag">Python</span><span class="tech-tag">FastAPI</span><span class="tech-tag">SQLAlchemy</span><span class="tech-tag">JavaScript</span><span class="tech-tag">JWT Auth</span><span class="tech-tag">AI/LLM</span>
                         </div>
-                        <a href="https://github.com/safarisoftwares-code/safari-ai-pro" target="_blank" rel="noopener" class="project-link">View on GitHub ↗</a>
+                        <div class="project-links">
+                            <a href="https://www.safari-ai-pro.co.ke" target="_blank" rel="noopener" class="project-link">🌐 Visit Live Site ↗</a>
+                             <a href="https://github.com/safarisoftwares-code/safari-ai-pro" target="_blank" rel="noopener" class="project-link">🐙 View on GitHub ↗</a>
+                        </div>
                     </div>
                 </div>
                 <div class="project-card">
@@ -349,12 +353,15 @@
                         <div class="tech-tags">
                             <span class="tech-tag">Python</span><span class="tech-tag">AI</span><span class="tech-tag">Chatbot</span><span class="tech-tag">API Integration</span><span class="tech-tag">Web Search</span>
                         </div>
-                        <a href="https://github.com/safarisoftwares-code/safari-ai-agent" target="_blank" rel="noopener" class="project-link">View on GitHub ↗</a>
+                        <div class="project-links">
+                            <a href="https://lite.safari-ai-pro.co.ke" target="_blank" rel="noopener" class="project-link">🌐 Visit Live Site ↗</a>
+                            <a href="https://safari-ai-agent.onrender.com" target="_blank" rel="noopener" class="project-link">🔗 Backup URL ↗</a>
+                            <a href="https://github.com/safarisoftwares-code/safari-ai-agent" target="_blank" rel="noopener" class="project-link">🐙 View on GitHub ↗</a>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Management Systems -->
+                        <!-- Management Systems -->
             <span class="subsection-label">🏢 Management Systems & ERPs</span>
             <div class="portfolio-grid">
                 <div class="project-card">
