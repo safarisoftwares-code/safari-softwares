@@ -89,7 +89,7 @@ contactForm.addEventListener('submit', async (e) => {
             throw new Error('Form submission failed');
         }
     } catch (error) {
-        formStatus.innerHTML = 'Please email us directly at <a href="mailto:safarisoftwares@gmail.com">safarisoftwares@gmail.com</a>';
+        formStatus.innerHTML = 'Please email us directly at <a href="mailto:info@safarisoftwares.co.ke">info@safarisoftwares.co.ke</a>';
         formStatus.className = 'form-status error';
     } finally {
         setTimeout(() => {
