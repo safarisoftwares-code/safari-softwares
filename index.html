@@ -751,6 +751,7 @@
             <p>Tell us what you need. We'll respond within 24 hours with initial thoughts — no obligation.</p>
             <div class="contact-wrapper">
                 <form class="contact-form" id="contactForm">
+                    <input type="hidden" name="access_key" value="58212892-2a5e-4b9b-bd4a-adfabcd154f7">
                     <input type="text" name="name" placeholder="Your Name" required>
                     <input type="email" name="email" placeholder="Email Address" required>
                     <input type="text" name="company" placeholder="Company / Organization (optional)">
@@ -880,7 +881,7 @@
             formStatus.className = 'form-status';
             const formData = new FormData(contactForm);
             const data = Object.fromEntries(formData.entries());
-            const FORM_ENDPOINT = 'https://formsubmit.co/info@safarisoftwares.co.ke';
+            const FORM_ENDPOINT = 'https://api.web3forms.com/submit';
             try {
                 const response = await fetch(FORM_ENDPOINT, {
                     method: 'POST',
