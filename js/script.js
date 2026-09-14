@@ -72,7 +72,7 @@ contactForm.addEventListener('submit', async (e) => {
     const data = Object.fromEntries(formData.entries());
     
     // Replace with your Formspree endpoint
-    const FORM_ENDPOINT = 'https://formspree.io/f/mljeqlnz';
+    const FORM_ENDPOINT = 'https://formsubmit.co/info@safarisoftwares.co.ke';
     
     try {
         const response = await fetch(FORM_ENDPOINT, {
