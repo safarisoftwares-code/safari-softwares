@@ -72,7 +72,7 @@ contactForm.addEventListener('submit', async (e) => {
     const data = Object.fromEntries(formData.entries());
     
     // Replace with your Formspree endpoint
-    const FORM_ENDPOINT = 'https://formspree.io/f/your-form-id-here';
+    const FORM_ENDPOINT = 'https://formspree.io/f/mljeqlnz';
     
     try {
         const response = await fetch(FORM_ENDPOINT, {
