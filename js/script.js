@@ -71,7 +71,7 @@ contactForm.addEventListener('submit', async (e) => {
     const formData = new FormData(contactForm);
     const data = Object.fromEntries(formData.entries());
     
-    // Replace with your Formspree endpoint
+    // Web3Forms endpoint
     const FORM_ENDPOINT = 'https://api.web3forms.com/submit';
     
     try {
