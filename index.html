@@ -309,6 +309,7 @@
                 <li><a href="#portfolio">Work</a></li>
                 <li><a href="#process">Process</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#" id="installNavBtn" style="display:none; color:var(--accent); font-weight:600;">📱 Install App</a></li>
                 <li><a href="#contact" class="btn">Start a Project</a></li>
             </ul>
         </nav>
@@ -888,6 +889,9 @@
                 <a href="https://github.com/safarisoftwares-code" target="_blank" rel="noopener">GitHub</a> &nbsp;|&nbsp;
                 <a href="mailto:info@safarisoftwares.co.ke">info@safarisoftwares.co.ke</a>
             </p>
+            <p style="margin-top:1rem;">
+                <button id="installFooterBtn" class="btn" style="display:none; font-size:0.9rem; padding:0.5rem 1.2rem;">📱 Install Safari Softwares App</button>
+            </p>
         </div>
     </footer>
 
@@ -929,6 +933,42 @@
                 console.warn('Form endpoint not configured.');
             }
         });
+
+        // PWA Install Button Logic
+        let deferredPrompt;
+        const installNavBtn = document.getElementById('installNavBtn');
+        const installFooterBtn = document.getElementById('installFooterBtn');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            // Show install buttons
+            if (installNavBtn) installNavBtn.style.display = 'inline-block';
+            if (installFooterBtn) installFooterBtn.style.display = 'inline-block';
+        });
+
+        async function handleInstallClick(e) {
+            e.preventDefault();
+            if (!deferredPrompt) {
+                alert('To install:\n\niPhone: Tap Share → Add to Home Screen\n\nAndroid: Tap Menu → Install App');
+                return;
+            }
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            console.log('Install outcome:', outcome);
+            deferredPrompt = null;
+            if (installNavBtn) installNavBtn.textContent = 'App Installed';
+            if (installFooterBtn) installFooterBtn.textContent = 'Safari Softwares App Installed';
+        }
+
+        if (installNavBtn) installNavBtn.addEventListener('click', handleInstallClick);
+        if (installFooterBtn) installFooterBtn.addEventListener('click', handleInstallClick);
+
+        // Detect if already installed (standalone mode)
+        if (window.matchMedia('(display-mode: standalone)').matches) {
+            if (installNavBtn) installNavBtn.textContent = 'App Installed';
+            if (installFooterBtn) installFooterBtn.textContent = 'Safari Softwares App Installed';
+        }
 
         // Register Service Worker for PWA
         if ('serviceWorker' in navigator) {
