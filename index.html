@@ -939,12 +939,44 @@
         const installNavBtn = document.getElementById('installNavBtn');
         const installFooterBtn = document.getElementById('installFooterBtn');
 
+        // Check if app is already installed
+        function isAppInstalled() {
+            // Check standalone mode
+            if (window.matchMedia('(display-mode: standalone)').matches) return true;
+            if (window.navigator.standalone === true) return true;
+            // Check if launched from app
+            if (document.referrer.includes('android-app://')) return true;
+            // Check localStorage flag
+            if (localStorage.getItem('safariAppInstalled') === 'true') return true;
+            return false;
+        }
+
+        function hideInstallButtons() {
+            if (installNavBtn) installNavBtn.style.display = 'none';
+            if (installFooterBtn) installFooterBtn.style.display = 'none';
+        }
+
+        // Hide buttons if already installed
+        if (isAppInstalled()) {
+            hideInstallButtons();
+        }
+
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
+            // Don't show button if already installed
+            if (isAppInstalled()) {
+                hideInstallButtons();
+                return;
+            }
             deferredPrompt = e;
-            // Show install buttons
             if (installNavBtn) installNavBtn.style.display = 'inline-block';
             if (installFooterBtn) installFooterBtn.style.display = 'inline-block';
+        });
+
+        // Listen for successful install
+        window.addEventListener('appinstalled', () => {
+            localStorage.setItem('safariAppInstalled', 'true');
+            hideInstallButtons();
         });
 
         async function handleInstallClick(e) {
