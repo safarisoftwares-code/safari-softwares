@@ -1,0 +1,4 @@
+﻿User-agent: *
+Allow: /
+
+Sitemap: https://safarisoftwares.co.ke/sitemap.xml

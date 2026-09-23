@@ -23,6 +23,15 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Safari Softwares | From Vision to Version">
     <meta name="twitter:description" content="Custom software and AI solutions built in Kenya for the world.">
+
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#d97706">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Safari">
+    <link rel="apple-touch-icon" href="/assets/icon.svg">
+    <link rel="icon" type="image/svg+xml" href="/assets/icon.svg">
     <style>
         :root {
             --bg: #faf9f6;
@@ -919,6 +928,15 @@
                 console.warn('Form endpoint not configured.');
             }
         });
+
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(reg => console.log('SW registered:', reg.scope))
+                    .catch(err => console.error('SW failed:', err));
+            });
+        }
     </script>
 </body>
 </html>

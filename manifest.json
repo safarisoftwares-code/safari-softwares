@@ -1,0 +1,39 @@
+{
+  "name": "Safari Softwares",
+  "short_name": "Safari",
+  "description": "Custom software & AI solutions from Kenya to the world.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#faf9f6",
+  "theme_color": "#d97706",
+  "lang": "en",
+  "categories": [
+    "business",
+    "productivity",
+    "developer"
+  ],
+  "icons": [
+    {
+      "src": "/assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Our Work",
+      "short_name": "Work",
+      "url": "/#portfolio",
+      "description": "View our portfolio"
+    },
+    {
+      "name": "Contact Us",
+      "short_name": "Contact",
+      "url": "/#contact",
+      "description": "Get in touch"
+    }
+  ]
+}
