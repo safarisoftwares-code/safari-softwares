@@ -227,6 +227,10 @@
             color: var(--text-light);
             margin-top: 0.15rem;
         }
+        .mobile-controls { display: none; align-items: center; gap: 0.25rem; margin-left: auto; }
+        @media (max-width: 768px) {
+            .mobile-controls { display: flex; }
+        }
         .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
         .mobile-menu-btn span { display: block; width: 26px; height: 2.5px; background: var(--text); margin: 6px 0; border-radius: 2px; transition: 0.3s; }
         .hero { padding-top: 8rem; padding-bottom: 4rem; text-align: center; }
@@ -388,12 +392,6 @@
     <header id="header">
         <nav>
             <a href="#" class="logo" style="display:flex; align-items:center; gap:0.5rem;"><img src="assets/lion-header.png" alt="Safari Softwares" style="height:40px; width:40px; border-radius:50%; object-fit:cover; border:2px solid #d97706; background:#fff;">Safari<span>Softwares</span></a>
-            <div style="display:flex; align-items:center; gap:0.25rem; margin-left:auto;">
-                <button class="search-btn" id="searchBtnMobile" aria-label="Search">🔍</button>
-                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
-                    <span></span><span></span><span></span>
-                </button>
-            </div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#services">Services</a></li>
                 <li><a href="#portfolio">Work</a></li>
@@ -403,6 +401,12 @@
                 <li><button class="search-btn" id="searchBtnDesktop" aria-label="Search" style="display:none;">🔍</button></li>
                 <li><a href="#contact" class="btn">Start a Project</a></li>
             </ul>
+            <div class="mobile-controls" style="display:none; align-items:center; gap:0.25rem;">
+                <button class="search-btn" id="searchBtnMobile" aria-label="Search">🔍</button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
         </nav>
     </header>
 
@@ -451,7 +455,7 @@
             <!-- AI & Advanced -->
             <span class="subsection-label">🤖 AI & Advanced Solutions</span>
             <div class="portfolio-grid">
-                <div class="project-card featured">
+                <div id="safari-ai-pro" class="project-card featured">
                     <div class="project-img" style="background:#1e1b4b; color:#c4b5fd;">🦁</div>
                     <div class="project-body">
                         <h3>Safari AI Pro</h3>
@@ -465,7 +469,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="project-card">
+                <div id="safari-ai-agent" class="project-card">
                     <div class="project-img" style="background:#0f172a; color:#38bdf8;">🤖</div>
                     <div class="project-body">
                         <h3>Safari AI Agent (Lite)</h3>
@@ -484,7 +488,7 @@
                         ﻿<!-- Management Systems -->
             <span class="subsection-label">🏢 Management Systems & ERPs</span>
             <div class="portfolio-grid">
-                <div class="project-card featured" style="background:linear-gradient(135deg,#ffffff,#fff7ed); border:2px solid #f59e0b;">
+                <div id="safari-pos-pro" class="project-card featured" style="background:linear-gradient(135deg,#ffffff,#fff7ed); border:2px solid #f59e0b;">
                     <div class="project-img" style="background:linear-gradient(135deg,#78350f,#d97706); color:#fef3c7;">🛒</div>
                     <div class="project-body">
                         <h3 style="color:#78350f;">Safari POS Pro</h3>
@@ -503,7 +507,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="project-card" style="background:linear-gradient(135deg,#ffffff,#f0fdf4); border:2px solid #22c55e;">
+                <div id="safari-pos-lite" class="project-card" style="background:linear-gradient(135deg,#ffffff,#f0fdf4); border:2px solid #22c55e;">
                     <div class="project-img" style="background:linear-gradient(135deg,#22c55e,#86efac); color:#ffffff;">🛒</div>
                     <div class="project-body">
                         <h3 style="color:#166534;">Safari POS System (Lite)</h3>
@@ -522,7 +526,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="project-card">
+                <div id="construction-erp" class="project-card">
                     <div class="project-img" style="background:#1e293b; color:#fbbf24;">🏗️</div>
                     <div class="project-body">
                         <h3>Construction ERP Software</h3>
@@ -534,7 +538,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="project-card">
+                <div id="hospital-manager" class="project-card">
                     <div class="project-img" style="background:#0f172a; color:#38bdf8;">🏥</div>
                     <div class="project-body">
                         <h3>Hospital Manager</h3>
@@ -561,7 +565,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="project-card">
+                <div id="equipment-rental" class="project-card">
                     <div class="project-img" style="background:#0d3b66; color:#f4d35e;">🔧</div>
                     <div class="project-body">
                         <h3>Equipment Rental Manager</h3>
@@ -573,7 +577,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="project-card">
+                <div id="cleantex" class="project-card">
                     <div class="project-img" style="background:#064e3b; color:#6ee7b7;">👔</div>
                     <div class="project-body">
                         <h3>Cleantex Dry Cleaners</h3>
@@ -584,7 +588,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="project-card">
+                <div id="ngili-calendar" class="project-card">
                     <div class="project-img" style="background:#7c2d12; color:#fdba74;">📅</div>
                     <div class="project-body">
                         <h3>The Ngili Calendar</h3>
@@ -601,7 +605,7 @@
             <!-- Educational Tools -->
             <span class="subsection-label">🎓 Educational & Exam Prep</span>
             <div class="portfolio-grid">
-                <div class="project-card">
+                <div id="epra-prep" class="project-card">
                     <div class="project-img" style="background:#312e81; color:#a5b4fc;">⚡</div>
                     <div class="project-body">
                         <h3>EPRA Electrician Exam Prep</h3>
@@ -613,7 +617,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="project-card" style="background:linear-gradient(135deg,#ffffff,#f0fdfa); border:2px solid #14b8a6;">
+                <div id="chemistry-sim" class="project-card" style="background:linear-gradient(135deg,#ffffff,#f0fdfa); border:2px solid #14b8a6;">
                     <div class="project-img" style="background:linear-gradient(135deg,#14b8a6,#5eead4); color:#ffffff;">🧪</div>
                     <div class="project-body">
                         <h3 style="color:#0f766e;">Kenyan Chemistry Practical Simulator</h3>
@@ -629,7 +633,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="project-card">
+                <div id="pastors-assistant" class="project-card">
                     <div class="project-img" style="background:#4a1d6e; color:#d8b4fe;">🙏</div>
                     <div class="project-body">
                         <h3>Pastor's Sermon Assistant</h3>
@@ -646,7 +650,7 @@
             <!-- Other Projects -->
             <span class="subsection-label">🛠️ Other Projects</span>
             <div class="portfolio-grid">
-                <div class="project-card">
+                <div id="wallpaper-manager" class="project-card">
                     <div class="project-img" style="background:#1e1b4b; color:#c4b5fd;">🖼️</div>
                     <div class="project-body">
                         <h3>Wallpaper Manager</h3>
@@ -657,7 +661,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="project-card">
+                <div id="boss-watu" class="project-card">
                     <div class="project-img" style="background:#1e293b; color:#94a3b8;">🤝</div>
                     <div class="project-body">
                         <h3>Boss & Watu Wamkono</h3>
@@ -669,7 +673,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="project-card">
+                <div id="memory-game" class="project-card">
                     <div class="project-img" style="background:#3b0764; color:#e9d5ff;">🧠</div>
                     <div class="project-body">
                         <h3>Memory Game</h3>
@@ -986,6 +990,20 @@
         </div>
     </footer>
 
+    <!-- SEARCH MODAL -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-container">
+            <div class="search-input-wrap">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="searchInput" placeholder="Search projects, services, sections..." autocomplete="off">
+                <button class="search-close" id="searchClose" aria-label="Close">✕</button>
+            </div>
+            <div class="search-results" id="searchResults">
+                <div class="search-empty">Start typing to search...</div>
+            </div>
+        </div>
+    </div>
+
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -1122,11 +1140,16 @@
                 keywords: s.title.toLowerCase() + ' ' + s.path.toLowerCase()
             }));
             
-            // Add projects
-            document.querySelectorAll('.project-card').forEach(card => {
+            // Add projects — with unique IDs
+            document.querySelectorAll('.project-card').forEach((card, idx) => {
                 const title = card.querySelector('h3')?.textContent || '';
                 const desc = card.querySelector('p')?.textContent || '';
                 const tags = Array.from(card.querySelectorAll('.tech-tag')).map(t => t.textContent).join(' ');
+                
+                // Give each card a unique ID if missing
+                if (!card.id) {
+                    card.id = 'project-' + idx;
+                }
                 
                 // Find section
                 let section = '';
@@ -1139,7 +1162,7 @@
                 index.push({
                     title: title,
                     path: section || 'Our Work',
-                    id: 'portfolio',
+                    id: card.id,
                     snippet: desc.substring(0, 100) + (desc.length > 100 ? '...' : ''),
                     keywords: (title + ' ' + desc + ' ' + tags + ' ' + section).toLowerCase()
                 });
@@ -1219,10 +1242,12 @@
                 btn.addEventListener('click', () => {
                     const targetId = btn.dataset.target;
                     closeSearch();
-                    setTimeout(() => {
-                        const el = document.getElementById(targetId);
-                        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }, 200);
+                    const el = document.getElementById(targetId);
+                    if (el) {
+                        el.scrollIntoView({ behavior: 'auto', block: 'start' });
+                        // Also update URL hash for direct linking
+                        history.pushState(null, null, '#' + targetId);
+                    }
                 });
             });
         }
@@ -1246,17 +1271,36 @@
 
         // Show desktop search button on larger screens
         function updateSearchVisibility() {
+            // CSS media queries handle display — just ensure desktop button is visible on large screens
+            const mobileControls = document.querySelector('.mobile-controls');
             if (window.innerWidth > 768) {
                 if (searchBtnDesktop) searchBtnDesktop.style.display = 'inline-block';
-                if (searchBtnMobile) searchBtnMobile.style.display = 'none';
+                if (mobileControls) mobileControls.style.display = 'none';
             } else {
                 if (searchBtnDesktop) searchBtnDesktop.style.display = 'none';
-                if (searchBtnMobile) searchBtnMobile.style.display = 'block';
+                if (mobileControls) mobileControls.style.display = 'flex';
             }
         }
         updateSearchVisibility();
         window.addEventListener('resize', updateSearchVisibility);
         if (searchBtnDesktop) searchBtnDesktop.addEventListener('click', openSearch);
+
+        // Scroll to top on page load / refresh
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.addEventListener('load', () => {
+            // Only scroll to top if no hash in URL
+            if (!window.location.hash) {
+                window.scrollTo(0, 0);
+            }
+        });
+        // Also on initial load
+        window.addEventListener('DOMContentLoaded', () => {
+            if (!window.location.hash) {
+                window.scrollTo(0, 0);
+            }
+        });
 
         // Register Service Worker for PWA
         if ('serviceWorker' in navigator) {
@@ -1267,19 +1311,5 @@
             });
         }
     </script>
-    <!-- SEARCH MODAL -->
-    <div class="search-modal" id="searchModal">
-        <div class="search-container">
-            <div class="search-input-wrap">
-                <span class="search-icon">🔍</span>
-                <input type="text" id="searchInput" placeholder="Search projects, services, sections..." autocomplete="off">
-                <button class="search-close" id="searchClose" aria-label="Close">✕</button>
-            </div>
-            <div class="search-results" id="searchResults">
-                <div class="search-empty">Start typing to search...</div>
-            </div>
-        </div>
-    </div>
-
 </body>
 </html>
