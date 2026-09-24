@@ -140,6 +140,93 @@
             margin-left: 0.75rem;
         }
         .btn-outline:hover { border-color: var(--accent); background: transparent; color: var(--accent) !important; }
+        .search-btn { background: none; border: none; cursor: pointer; padding: 0.5rem; font-size: 1.2rem; color: var(--text); transition: color 0.2s; }
+        .search-btn:hover { color: var(--accent); }
+        .search-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 80px;
+        }
+        .search-modal.active { display: flex; }
+        .search-container {
+            background: #fff;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            max-height: 80vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .search-input-wrap {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border);
+            gap: 0.75rem;
+        }
+        .search-input-wrap input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 1.1rem;
+            font-family: var(--font-sans);
+            color: var(--text);
+            background: transparent;
+        }
+        .search-input-wrap .search-icon { font-size: 1.2rem; color: var(--accent); }
+        .search-close {
+            background: none; border: none; cursor: pointer;
+            font-size: 1.3rem; color: var(--text-light);
+            padding: 0.25rem; line-height: 1;
+        }
+        .search-close:hover { color: var(--accent); }
+        .search-results {
+            overflow-y: auto;
+            padding: 0.5rem 0;
+        }
+        .search-empty {
+            padding: 2rem 1.25rem;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+        .search-result-item {
+            display: block;
+            padding: 0.85rem 1.25rem;
+            text-decoration: none;
+            color: var(--text);
+            transition: background 0.2s;
+            cursor: pointer;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            font-family: var(--font-sans);
+        }
+        .search-result-item:hover { background: #fff7ed; }
+        .search-result-item .result-title {
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.15rem;
+            font-size: 0.95rem;
+        }
+        .search-result-item .result-path {
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+        .search-result-item .result-snippet {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 0.15rem;
+        }
         .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
         .mobile-menu-btn span { display: block; width: 26px; height: 2.5px; background: var(--text); margin: 6px 0; border-radius: 2px; transition: 0.3s; }
         .hero { padding-top: 8rem; padding-bottom: 4rem; text-align: center; }
@@ -301,15 +388,19 @@
     <header id="header">
         <nav>
             <a href="#" class="logo" style="display:flex; align-items:center; gap:0.5rem;"><img src="assets/lion-header.png" alt="Safari Softwares" style="height:40px; width:40px; border-radius:50%; object-fit:cover; border:2px solid #d97706; background:#fff;">Safari<span>Softwares</span></a>
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
-                <span></span><span></span><span></span>
-            </button>
+            <div style="display:flex; align-items:center; gap:0.25rem; margin-left:auto;">
+                <button class="search-btn" id="searchBtnMobile" aria-label="Search">🔍</button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#services">Services</a></li>
                 <li><a href="#portfolio">Work</a></li>
                 <li><a href="#process">Process</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#" id="installNavBtn" style="display:none; color:var(--accent); font-weight:600;">📱 Install App</a></li>
+                <li><button class="search-btn" id="searchBtnDesktop" aria-label="Search" style="display:none;">🔍</button></li>
                 <li><a href="#contact" class="btn">Start a Project</a></li>
             </ul>
         </nav>
@@ -1002,6 +1093,171 @@
             if (installFooterBtn) installFooterBtn.textContent = 'Safari Softwares App Installed';
         }
 
+        // SEARCH FUNCTIONALITY
+        const searchModal = document.getElementById('searchModal');
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+        const searchClose = document.getElementById('searchClose');
+        const searchBtnMobile = document.getElementById('searchBtnMobile');
+        const searchBtnDesktop = document.getElementById('searchBtnDesktop');
+
+        // Build search index from the page
+        function buildSearchIndex() {
+            const index = [];
+            
+            // Add major sections
+            const sections = [
+                { id: 'services', title: 'Services', path: 'What We Do' },
+                { id: 'portfolio', title: 'Our Work', path: 'Portfolio' },
+                { id: 'process', title: 'How We Work', path: 'Process' },
+                { id: 'about', title: 'About Us', path: 'Company' },
+                { id: 'contact', title: 'Contact', path: 'Get In Touch' },
+                { id: 'colors', title: 'Brand Colors', path: 'Palette' }
+            ];
+            sections.forEach(s => index.push({
+                title: s.title,
+                path: s.path,
+                id: s.id,
+                snippet: '',
+                keywords: s.title.toLowerCase() + ' ' + s.path.toLowerCase()
+            }));
+            
+            // Add projects
+            document.querySelectorAll('.project-card').forEach(card => {
+                const title = card.querySelector('h3')?.textContent || '';
+                const desc = card.querySelector('p')?.textContent || '';
+                const tags = Array.from(card.querySelectorAll('.tech-tag')).map(t => t.textContent).join(' ');
+                
+                // Find section
+                let section = '';
+                let prev = card.closest('.portfolio-grid')?.previousElementSibling;
+                while (prev && !prev.classList?.contains('subsection-label')) {
+                    prev = prev.previousElementSibling;
+                }
+                if (prev) section = prev.textContent.trim();
+                
+                index.push({
+                    title: title,
+                    path: section || 'Our Work',
+                    id: 'portfolio',
+                    snippet: desc.substring(0, 100) + (desc.length > 100 ? '...' : ''),
+                    keywords: (title + ' ' + desc + ' ' + tags + ' ' + section).toLowerCase()
+                });
+            });
+            
+            // Add services
+            document.querySelectorAll('.service-card').forEach(card => {
+                const title = card.querySelector('h3')?.textContent || '';
+                const desc = card.querySelector('p')?.textContent || '';
+                index.push({
+                    title: title,
+                    path: 'Services',
+                    id: 'services',
+                    snippet: desc.substring(0, 100) + (desc.length > 100 ? '...' : ''),
+                    keywords: (title + ' ' + desc + ' services').toLowerCase()
+                });
+            });
+            
+            // Add partners
+            document.querySelectorAll('#partners a').forEach(a => {
+                const name = a.querySelector('strong')?.textContent || '';
+                if (name) {
+                    index.push({
+                        title: name,
+                        path: 'Partners & Clients',
+                        id: 'partners',
+                        snippet: '',
+                        keywords: (name + ' partner client').toLowerCase()
+                    });
+                }
+            });
+            
+            return index;
+        }
+
+        const searchIndex = buildSearchIndex();
+
+        function openSearch() {
+            searchModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => searchInput.focus(), 100);
+        }
+
+        function closeSearch() {
+            searchModal.classList.remove('active');
+            document.body.style.overflow = '';
+            searchInput.value = '';
+            searchResults.innerHTML = '<div class="search-empty">Start typing to search...</div>';
+        }
+
+        function performSearch(query) {
+            query = query.trim().toLowerCase();
+            if (!query) {
+                searchResults.innerHTML = '<div class="search-empty">Start typing to search...</div>';
+                return;
+            }
+
+            const terms = query.split(/\s+/).filter(t => t.length > 0);
+            const matches = searchIndex.filter(item => {
+                return terms.every(term => item.keywords.includes(term));
+            });
+
+            if (matches.length === 0) {
+                searchResults.innerHTML = '<div class="search-empty">No results for "' + query + '"<br><br>Try: POS, AI, ERP, loan, hospital, construction, contact</div>';
+                return;
+            }
+
+            searchResults.innerHTML = matches.map(m => 
+                '<button class="search-result-item" data-target="' + m.id + '">' +
+                    '<div class="result-title">' + m.title + '</div>' +
+                    '<div class="result-path">' + m.path + '</div>' +
+                    (m.snippet ? '<div class="result-snippet">' + m.snippet + '</div>' : '') +
+                '</button>'
+            ).join('');
+
+            searchResults.querySelectorAll('.search-result-item').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const targetId = btn.dataset.target;
+                    closeSearch();
+                    setTimeout(() => {
+                        const el = document.getElementById(targetId);
+                        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 200);
+                });
+            });
+        }
+
+        // Event listeners
+        searchBtnMobile?.addEventListener('click', openSearch);
+        searchClose?.addEventListener('click', closeSearch);
+        searchModal?.addEventListener('click', (e) => { if (e.target === searchModal) closeSearch(); });
+        searchInput?.addEventListener('input', (e) => performSearch(e.target.value));
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                openSearch();
+            }
+            if (e.key === 'Escape' && searchModal.classList.contains('active')) {
+                closeSearch();
+            }
+        });
+
+        // Show desktop search button on larger screens
+        function updateSearchVisibility() {
+            if (window.innerWidth > 768) {
+                if (searchBtnDesktop) searchBtnDesktop.style.display = 'inline-block';
+                if (searchBtnMobile) searchBtnMobile.style.display = 'none';
+            } else {
+                if (searchBtnDesktop) searchBtnDesktop.style.display = 'none';
+                if (searchBtnMobile) searchBtnMobile.style.display = 'block';
+            }
+        }
+        updateSearchVisibility();
+        window.addEventListener('resize', updateSearchVisibility);
+        if (searchBtnDesktop) searchBtnDesktop.addEventListener('click', openSearch);
+
         // Register Service Worker for PWA
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
@@ -1011,5 +1267,19 @@
             });
         }
     </script>
+    <!-- SEARCH MODAL -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-container">
+            <div class="search-input-wrap">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="searchInput" placeholder="Search projects, services, sections..." autocomplete="off">
+                <button class="search-close" id="searchClose" aria-label="Close">✕</button>
+            </div>
+            <div class="search-results" id="searchResults">
+                <div class="search-empty">Start typing to search...</div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
