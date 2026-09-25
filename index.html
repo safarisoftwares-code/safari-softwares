@@ -327,7 +327,7 @@
         }
         .step h4 { margin-bottom: 0.4rem; }
         .step p { font-size: 0.9rem; margin: 0; }
-        .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; margin-top: 2rem; }
+        .about-content { display: grid; grid-template-columns: 1.3fr 1fr; gap: 4rem; align-items: start; margin-top: 2rem; }
         .about-text .highlight {
             background: #fff3e0;
             padding: 1.25rem 1.5rem;
@@ -380,6 +380,8 @@
             .mobile-menu-btn { display: block; }
             .hero { padding-top: 6rem; }
             .about-content, .contact-wrapper { grid-template-columns: 1fr; gap: 2rem; }
+            .about-content > div:last-child > div { position: static !important; }
+            .about-content > div:last-child { display: block !important; }
             .btn-outline { margin-left: 0; margin-top: 0.5rem; }
             .portfolio-grid { grid-template-columns: 1fr; }
             .stats-bar { gap: 1.5rem; }
@@ -899,8 +901,110 @@
                     <p>Every project we build is version-controlled and accessible on GitHub — transparent development from day one.</p>
                     <a href="https://github.com/safarisoftwares-code" target="_blank" rel="noopener" class="btn" style="margin-top:0.5rem;">View Our GitHub</a>
                 </div>
-                <div style="text-align:center;">
-                    <div style="width:100%; max-width:380px; height:320px; background:#f0ebe3; border-radius:var(--radius); display:inline-flex; align-items:center; justify-content:center; font-family:var(--font-mono); color:#888;">🖥️ Team Photo</div>
+                <div style="display:flex; flex-direction:column; justify-content:space-between; gap:2rem; height:100%;">
+                    <div style="width:100%; background:linear-gradient(135deg,#fff7ed,#ffffff); border:2px solid #d97706; border-radius:var(--radius); padding:1.75rem 2rem; box-shadow:0 8px 30px rgba(217,119,6,0.15); ">
+                        <h3 style="color:#78350f; font-size:1.1rem; margin-bottom:1.25rem; display:flex; align-items:center; gap:0.5rem;"><span style="font-size:1.5rem;">🎯</span> Recent Milestones</h3>
+                        <ul style="list-style:none; padding:0; margin:0;">
+                            <li style="display:flex; align-items:flex-start; gap:0.75rem; padding:0.6rem 0; border-bottom:1px solid #fef3c7;">
+                                <span style="color:#16a34a; font-weight:800; font-size:1.1rem;">✓</span>
+                                <div>
+                                    <strong style="color:var(--text); font-size:0.95rem;">Launched Docs Recava</strong>
+                                    <div style="font-size:0.82rem; color:var(--text-light);">Lost-document recovery for Kenya</div>
+                                </div>
+                            </li>
+                            <li style="display:flex; align-items:flex-start; gap:0.75rem; padding:0.6rem 0; border-bottom:1px solid #fef3c7;">
+                                <span style="color:#16a34a; font-weight:800; font-size:1.1rem;">✓</span>
+                                <div>
+                                    <strong style="color:var(--text); font-size:0.95rem;">18+ Projects Shipped</strong>
+                                    <div style="font-size:0.82rem; color:var(--text-light);">Across 7+ industries</div>
+                                </div>
+                            </li>
+                            <li style="display:flex; align-items:flex-start; gap:0.75rem; padding:0.6rem 0; border-bottom:1px solid #fef3c7;">
+                                <span style="color:#16a34a; font-weight:800; font-size:1.1rem;">✓</span>
+                                <div>
+                                    <strong style="color:var(--text); font-size:0.95rem;">Indexed on Google</strong>
+                                    <div style="font-size:0.82rem; color:var(--text-light);">Ranking for "Safari Softwares"</div>
+                                </div>
+                            </li>
+                            <li style="display:flex; align-items:flex-start; gap:0.75rem; padding:0.6rem 0; border-bottom:1px solid #fef3c7;">
+                                <span style="color:#16a34a; font-weight:800; font-size:1.1rem;">✓</span>
+                                <div>
+                                    <strong style="color:var(--text); font-size:0.95rem;">KRA-Compliant POS</strong>
+                                    <div style="font-size:0.82rem; color:var(--text-light);">3-tier tax ledger, M-Pesa ready</div>
+                                </div>
+                            </li>
+                            <li style="display:flex; align-items:flex-start; gap:0.75rem; padding:0.6rem 0;">
+                                <span style="color:#16a34a; font-weight:800; font-size:1.1rem;">✓</span>
+                                <div>
+                                    <strong style="color:var(--text); font-size:0.95rem;">100% Open Source</strong>
+                                    <div style="font-size:0.82rem; color:var(--text-light);">All projects on GitHub</div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div style="margin-top:1.25rem; padding-top:1rem; border-top:1px dashed #d97706; text-align:center;">
+                            <span style="font-size:0.85rem; color:#78350f; font-style:italic; font-weight:600;">From Vision to Version 🦁</span>
+                        </div>
+                        
+                    </div>
+                    <!-- FAST SHIPPING TIMELINE -->
+                    <div style="width:100%; margin-top:1rem; background:linear-gradient(135deg,#ffffff,#fff7ed); border:2px solid #d97706; border-radius:var(--radius); padding:1rem 1.5rem; box-shadow:0 8px 30px rgba(217,119,6,0.15); ">
+                        <h3 style="color:#78350f; font-size:1rem; margin-bottom:0.75rem; display:flex; align-items:center; gap:0.5rem;"><span style="font-size:1.2rem;">🚀</span> Fast Shipping</h3>
+                        <div style="display:flex; flex-direction:column; gap:0.3rem;">
+                            <div style="display:flex; align-items:center; gap:0.75rem; padding:0.3rem 0; border-bottom:1px dashed #fef3c7;">
+                                <span style="font-size:1.2rem;">🎯</span>
+                                <div style="flex:1;">
+                                    <strong style="color:var(--text); font-size:0.85rem;">Discovery Call</strong>
+                                    <div style="font-size:0.7rem; color:var(--text-light);">Free consultation to understand your needs</div>
+                                </div>
+                                <span style="color:#d97706; font-size:0.75rem; font-weight:600;">Day 0</span>
+                            </div>
+                            <div style="display:flex; align-items:center; gap:0.75rem; padding:0.3rem 0; border-bottom:1px dashed #fef3c7;">
+                                <span style="font-size:1.2rem;">📝</span>
+                                <div style="flex:1;">
+                                    <strong style="color:var(--text); font-size:0.85rem;">Proposal</strong>
+                                    <div style="font-size:0.7rem; color:var(--text-light);">Clear scope, timeline &amp; fixed price</div>
+                                </div>
+                                <span style="color:#d97706; font-size:0.75rem; font-weight:600;">Day 1</span>
+                            </div>
+                            <div style="display:flex; align-items:center; gap:0.75rem; padding:0.3rem 0; border-bottom:1px dashed #fef3c7;">
+                                <span style="font-size:1.2rem;">💡</span>
+                                <div style="flex:1;">
+                                    <strong style="color:var(--text); font-size:0.85rem;">Idea &amp; Design</strong>
+                                    <div style="font-size:0.7rem; color:var(--text-light);">Concept, wireframes &amp; vision locked</div>
+                                </div>
+                                <span style="color:#d97706; font-size:0.75rem; font-weight:600;">Week 1</span>
+                            </div>
+                            <div style="display:flex; align-items:center; gap:0.75rem; padding:0.3rem 0; border-bottom:1px dashed #fef3c7;">
+                                <span style="font-size:1.2rem;">💻</span>
+                                <div style="flex:1;">
+                                    <strong style="color:var(--text); font-size:0.85rem;">Build &amp; Iterate</strong>
+                                    <div style="font-size:0.7rem; color:var(--text-light);">Short cycles — you see progress weekly</div>
+                                </div>
+                                <span style="color:#d97706; font-size:0.75rem; font-weight:600;">Week 2-3</span>
+                            </div>
+                            <div style="display:flex; align-items:center; gap:0.75rem; padding:0.3rem 0; border-bottom:1px dashed #fef3c7;">
+                                <span style="font-size:1.2rem;">🧪</span>
+                                <div style="flex:1;">
+                                    <strong style="color:var(--text); font-size:0.85rem;">Test &amp; Refine</strong>
+                                    <div style="font-size:0.7rem; color:var(--text-light);">Bugs fixed, edge cases handled</div>
+                                </div>
+                                <span style="color:#d97706; font-size:0.75rem; font-weight:600;">Week 3-4</span>
+                            </div>
+                            <div style="display:flex; align-items:center; gap:0.75rem; padding:0.3rem 0;">
+                                <span style="font-size:1.2rem;">🚀</span>
+                                <div style="flex:1;">
+                                    <strong style="color:var(--text); font-size:0.85rem;">Launch &amp; Support</strong>
+                                    <div style="font-size:0.7rem; color:var(--text-light);">Deployed, trained &amp; maintained</div>
+                                </div>
+                                <span style="color:#d97706; font-size:0.75rem; font-weight:600;">Week 4</span>
+                            </div>
+                        </div>
+                        <div style="margin-top:0.75rem; padding-top:0.5rem; border-top:1px dashed #d97706; text-align:center;">
+                            <span style="font-size:0.8rem; color:#78350f; font-weight:700; display:block; margin-bottom:0.35rem;">⚡ Average: 2–4 weeks</span>
+                            <span style="font-size:0.72rem; color:#78350f; font-style:italic;">🛡️ 30-day post-launch support included</span>
+                        </div>
+                        
+                    </div>
                 </div>
             </div>
         </div>
