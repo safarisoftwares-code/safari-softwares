@@ -400,6 +400,7 @@
                 <li><a href="#process">Process</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#" id="installNavBtn" style="display:none; color:var(--accent); font-weight:600;">📱 Install App</a></li>
+                <li><a href="#" id="refreshBtn" style="color:var(--accent); font-weight:600;">🔄 Refresh App</a></li>
                 <li><button class="search-btn" id="searchBtnDesktop" aria-label="Search" style="display:none;">🔍</button></li>
                 <li><a href="#contact" class="btn">Start a Project</a></li>
             </ul>
@@ -1444,6 +1445,41 @@
                 window.scrollTo(0, 0);
             }
         });
+
+        // HARD REFRESH FUNCTIONALITY
+        const refreshBtn = document.getElementById('refreshBtn');
+
+        async function hardRefresh() {
+            if (refreshBtn) refreshBtn.textContent = 'Refreshing...';
+            try {
+                if ('caches' in window) {
+                    const cacheNames = await caches.keys();
+                    await Promise.all(cacheNames.map(name => caches.delete(name)));
+                }
+                if ('serviceWorker' in navigator) {
+                    const registrations = await navigator.serviceWorker.getRegistrations();
+                    await Promise.all(registrations.map(reg => reg.unregister()));
+                }
+                const installed = localStorage.getItem('safariAppInstalled');
+                localStorage.clear();
+                if (installed) localStorage.setItem('safariAppInstalled', installed);
+                sessionStorage.clear();
+                setTimeout(() => window.location.reload(true), 500);
+            } catch (err) {
+                console.error('Refresh failed:', err);
+                window.location.reload(true);
+            }
+        }
+
+        if (refreshBtn) {
+            refreshBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                hardRefresh();
+                const navLinks = document.getElementById('navLinks');
+                if (navLinks) navLinks.classList.remove('active');
+            });
+        }
+
 
         // Register Service Worker for PWA
         if ('serviceWorker' in navigator) {
