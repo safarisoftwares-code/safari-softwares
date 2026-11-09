@@ -386,6 +386,59 @@
             .portfolio-grid { grid-template-columns: 1fr; }
             .stats-bar { gap: 1.5rem; }
         }
+    
+        /* --- BALANCED GRID CSS --- */
+        .project-img {
+            height: 82px !important; /* Reduced by 1.8cm */
+            min-height: 82px !important;
+            font-size: 2rem !important;
+        }
+        .project-card {
+            display: flex !important;
+            flex-direction: column !important;
+            height: 100% !important; /* Stretch to match tallest card in row */
+            min-height: 380px !important; /* Baseline height */
+            overflow: hidden !important; 
+        }
+        .project-body {
+            flex: 1 1 auto !important;
+            display: flex !important;
+            flex-direction: column !important;
+            overflow: hidden !important;
+            padding: 15px !important;
+        }
+        .project-body p {
+            flex: 1 1 auto !important;
+            overflow-y: auto !important; /* Scrollbar if text is too long */
+            font-size: 0.85rem !important;
+        }
+        .project-body p::-webkit-scrollbar { width: 3px; }
+        .project-body p::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+        .project-links {
+            margin-top: auto !important;
+            padding-top: 10px !important;
+            font-size: 0.8rem !important;
+        }
+
+
+        /* --- UNIFORM CARD HEIGHT (Management Systems & ERPs downward) --- */
+        :root { --uniform-card-h: 420px; }
+        .project-card.unified-height {
+            height: var(--uniform-card-h) !important;
+            min-height: 380px !important;
+            max-height: none !important;
+            display: flex !important;
+            flex-direction: column !important;
+            overflow: hidden !important;
+        }
+        .project-card.unified-height.trim-half-cm {
+            height: calc(var(--uniform-card-h) - 0.5cm) !important;
+        }
+        .project-card.unified-height .project-body { flex: 1 1 auto !important; overflow: hidden !important; }
+        .project-card.unified-height .project-body p {
+            flex: 1 1 auto !important; overflow-y: auto !important;
+        }
+        .project-card.unified-height .project-links { margin-top: auto !important; }
     </style>
 </head>
 <body>
@@ -492,7 +545,7 @@
             <span class="subsection-label">🏢 Management Systems & ERPs</span>
             <div class="portfolio-grid">
                 <!-- POS System Card -->
-                <div id="safari-pos-system" class="project-card featured" style="background:linear-gradient(135deg,#ffffff,#fff7ed); border:2px solid #f59e0b;">
+                <div id="safari-pos-system" class="project-card featured unified-height" style="background:linear-gradient(135deg,#ffffff,#fff7ed); border:2px solid #f59e0b;">
                     <div class="project-img" style="background:linear-gradient(135deg,#78350f,#d97706); color:#fef3c7;">🛒</div>
                     <div class="project-body">
                         <h3 style="color:#78350f;">Safari POS System</h3>
@@ -513,7 +566,7 @@
                 </div>
 
                 <!-- BuildCore Card -->
-                <div id="construction-erp" class="project-card featured" style="background:linear-gradient(135deg,#ffffff,#fef3c7); border:2px solid #f59e0b;">
+                <div id="construction-erp" class="project-card featured unified-height" style="background:linear-gradient(135deg,#ffffff,#fef3c7); border:2px solid #f59e0b;">
                     <div class="project-img" style="background:linear-gradient(135deg,#78350f,#f59e0b); color:#fef3c7;">🏗️</div>
                     <div class="project-body">
                         <h3 style="color:#78350f;">BuildCore — Construction ERP</h3>
@@ -529,7 +582,7 @@
                 </div>
 
                 <!-- Hospital Manager Card -->
-                <div id="hospital-manager" class="project-card">
+                <div id="hospital-manager" class="project-card unified-height">
                     <div class="project-img" style="background:#0f172a; color:#38bdf8;">🏥</div>
                     <div class="project-body">
                         <h3>Hospital Manager</h3>
@@ -542,7 +595,7 @@
                 </div>
 
                 <!-- Shylock Capital Card -->
-                <div class="project-card" style="background:linear-gradient(135deg,#ffffff,#ecfdf5); border:2px solid #10b981;">
+                <div class="project-card unified-height" style="background:linear-gradient(135deg,#ffffff,#ecfdf5); border:2px solid #10b981;">
                     <div class="project-img" style="background:linear-gradient(135deg,#10b981,#34d399); color:#ffffff;">💰</div>
                     <div class="project-body">
                         <h3 style="color:#065f46;">Shylock Capital (Loan Manager)</h3>
@@ -560,7 +613,7 @@
                 </div>
 
                 <!-- Equipment Rental Card -->
-                <div id="equipment-rental" class="project-card">
+                <div id="equipment-rental" class="project-card unified-height">
                     <div class="project-img" style="background:#0d3b66; color:#f4d35e;">🔧</div>
                     <div class="project-body">
                         <h3>Equipment Rental Manager</h3>
@@ -574,7 +627,7 @@
                 </div>
 
                 <!-- Cleantex Card -->
-                <div id="cleantex" class="project-card">
+                <div id="cleantex" class="project-card unified-height">
                     <div class="project-img" style="background:#064e3b; color:#6ee7b7;">👔</div>
                     <div class="project-body">
                         <h3>Cleantex Dry Cleaners</h3>
@@ -587,7 +640,7 @@
                 </div>
 
                 <!-- Ngili Calendar Card -->
-                <div id="ngili-calendar" class="project-card">
+                <div id="ngili-calendar" class="project-card unified-height">
                     <div class="project-img" style="background:#7c2d12; color:#fdba74;">📅</div>
                     <div class="project-body">
                         <h3>The Ngili Calendar</h3>
@@ -603,7 +656,7 @@
                 <!-- Hidden Transparent Placeholders to balance the grid (7 cards total, so 2 blanks needed) -->
                 
                 <!-- Future Project 1 -->
-                <div class="project-card" style="background:rgba(255, 255, 255, 0.4); border:2px dashed #3b82f6; box-shadow:none;">
+                <div class="project-card unified-height" style="background:rgba(255, 255, 255, 0.4); border:2px dashed #3b82f6; box-shadow:none;">
                     <div class="project-img" style="background:transparent; color:#3b82f6; opacity:0.5;">🚀</div>
                     <div class="project-body">
                         <h3 style="color:#555;">Future Project 1</h3>
@@ -618,19 +671,19 @@
                     </div>
                 </div>
 
-                <div id="reference-bible" class="project-card" style="position:relative;"><div style="position:absolute; top:12px; right:12px; background:#059669; color:white; padding:4px 10px; border-radius:999px; font-size:0.7rem; font-weight:700; letter-spacing:0.5px; z-index:2;">📖 SAFARI BIBLE</div>
+                <div id="reference-bible" class="project-card unified-height" style="position:relative;"><div style="position:absolute; top:12px; right:12px; background:#059669; color:white; padding:4px 10px; border-radius:999px; font-size:0.7rem; font-weight:700; letter-spacing:0.5px; z-index:2;">📖 SAFARI BIBLE</div>
                     <div class="project-img" style="background:linear-gradient(135deg, #064e3b, #059669); color:#ecfdf5; font-size:3rem;">📖</div>
                     <div class="project-body">
                         <h3 style="color:#064e3b;">Safari Reference Bible</h3>
-                        <p>A completely ad-free, offline-ready Bible application. Features 31,102 verses in both World English Bible (WEB) and King James Version (KJV). Includes instant search, dark mode, and shareable verse URLs with auto-scroll highlighting.</p>
+                        <p>A completely ad-free, offline-ready Bible application. Features 31,102 verses in both World English Bible (WEB) and King James Version (KJV). Includes instant search, dark mode, shareable verse URLs with auto-scroll highlighting, dark mode, font-size controls, and 16 missing WEB verses (including Acts 8:37) restored from KJV with perfect numbering alignment.</p>
                         <div class="tech-tags">
                             <span class="tech-tag" style="background:#ecfdf5; color:#047857; border:1px solid #10b981;">📖 31,102 Verses</span>
                             <span class="tech-tag" style="background:#ecfdf5; color:#047857; border:1px solid #10b981;">🌐 WEB & KJV</span>
                             <span class="tech-tag" style="background:#ecfdf5; color:#047857; border:1px solid #10b981;">🔒 Zero Tracking</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://safarisoftwares-code.github.io/Pastors-Sermon-Assistant/bible.html" target="_blank" rel="noopener" class="project-link" style="color:#059669;">📖 Read the Bible ↗</a>
-                            <a href="https://safarisoftwares-code.github.io/Pastors-Sermon-Assistant/" target="_blank" rel="noopener" class="project-link" style="color:#4a1d6e;">🙏 Sermon Assistant ↗</a>
+                            <a href="https://safarisoftwares-code.github.io/Bible-Study-Helper/bible.html" target="_blank" rel="noopener" class="project-link" style="color:#059669;">📖 Read the Bible ↗</a>
+                            <a href="https://safarisoftwares-code.github.io/Bible-Study-Helper/" target="_blank" rel="noopener" class="project-link" style="color:#4a1d6e;">📖 Bible Study Helper ↗</a>
                         </div>
                     </div>
                 </div>
@@ -639,7 +692,7 @@
             <!-- Document Management -->
             <span class="subsection-label">🔐 Document Management</span>
             <div class="portfolio-grid">
-                <div class="project-card featured" style="background:linear-gradient(135deg,#ffffff,#fff7ed); border:2px solid #d97706;">
+                <div class="project-card featured unified-height" style="background:linear-gradient(135deg,#ffffff,#fff7ed); border:2px solid #d97706;">
                     <div class="project-img" style="background:linear-gradient(135deg,#78350f,#d97706); color:#fef3c7; position:relative; overflow:hidden;">
                         <span style="position:absolute; font-size:5.5rem; top:-3%; left:0%; transform:rotate(-22deg); opacity:0.95; filter:drop-shadow(2px 3px 4px rgba(0,0,0,0.35));">🪪</span>
                         <span style="position:absolute; font-size:6rem; top:62%; left:8%; transform:rotate(30deg); opacity:0.9; filter:drop-shadow(2px 3px 4px rgba(0,0,0,0.35));">📄</span>
@@ -671,7 +724,7 @@
                 </div>
                 
                 <!-- Watcher Premium Card (replaces Future Project 3) -->
-                <div id="watcher-premium" class="project-card featured" style="background:linear-gradient(135deg,#fffbeb,#fef3c7); border:2px solid #d4a017; position:relative; overflow:hidden;">
+                <div id="watcher-premium" class="project-card featured unified-height trim-half-cm" style="background:linear-gradient(135deg,#fffbeb,#fef3c7); border:2px solid #d4a017; position:relative; overflow:hidden;">
                     <div style="position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg,#d4a017,#fbbf24,#d4a017); z-index:3;"></div>
                     <div style="position:absolute; top:12px; left:12px; background:linear-gradient(135deg,#d4a017,#fbbf24); color:#78350f; padding:4px 10px; border-radius:999px; font-size:0.7rem; font-weight:800; letter-spacing:0.5px; z-index:2; box-shadow:0 2px 6px rgba(212,160,23,0.4);">👑 PREMIUM</div>
                     <div class="project-img" style="background:linear-gradient(135deg,#b45309,#fbbf24,#d4a017); color:white; font-size:3rem; filter:drop-shadow(0 4px 12px rgba(212,160,23,0.5));">🛠️</div>
@@ -694,7 +747,7 @@
                 </div>
 
                 <!-- Watcher Card (replaces Future Project 4) -->
-                <div id="watcher" class="project-card featured" style="background:linear-gradient(135deg,#ffffff,#f5f3ff); border:2px solid #8b5cf6; position:relative;">
+                <div id="watcher" class="project-card featured unified-height trim-half-cm" style="background:linear-gradient(135deg,#ffffff,#f5f3ff); border:2px solid #8b5cf6; position:relative;">
                     <div style="position:absolute; top:12px; left:12px; background:#8b5cf6; color:white; padding:4px 10px; border-radius:999px; font-size:0.7rem; font-weight:700; letter-spacing:0.5px; z-index:2;">🛠️ DEVELOPER TOOL</div>
                     <div class="project-img" style="background:linear-gradient(135deg,#8b5cf6,#6366f1); color:white; font-size:3rem;">🛠️</div>
                     <div class="project-body">
@@ -708,7 +761,7 @@
                             <span class="tech-tag" style="background:#f5f3ff; color:#5b21b6; border:1px solid #8b5cf6;">🇰🇪 Kenya</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://watcher.safarisoftwares.workers.dev/" target="_blank" rel="noopener" class="project-link" style="color:#8b5cf6;">🌐 Visit Live Site ↗</a>
+                            <a href="https://watcher.safari-pos.co.ke/" target="_blank" rel="noopener" class="project-link" style="color:#8b5cf6;">🌐 Visit Live Site ↗</a>
                             <a href="https://github.com/safarisoftwares-code/watcher" target="_blank" rel="noopener" class="project-link" style="color:#8b5cf6;">🐙 View on GitHub ↗</a>
                         </div>
                     </div>
@@ -719,7 +772,7 @@
             <!-- Educational Tools -->
             <span class="subsection-label">🎓 Educational & Exam Prep</span>
             <div class="portfolio-grid">
-                <div id="epra-prep" class="project-card">
+                <div id="epra-prep" class="project-card unified-height">
                     <div class="project-img" style="background:#312e81; color:#a5b4fc;">⚡</div>
                     <div class="project-body">
                         <h3>EPRA Electrician Exam Prep</h3>
@@ -731,7 +784,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="chemistry-sim" class="project-card" style="background:linear-gradient(135deg,#ffffff,#f0fdfa); border:2px solid #14b8a6;">
+                <div id="chemistry-sim" class="project-card unified-height" style="background:linear-gradient(135deg,#ffffff,#f0fdfa); border:2px solid #14b8a6;">
                     <div class="project-img" style="background:linear-gradient(135deg,#14b8a6,#5eead4); color:#ffffff;">🧪</div>
                     <div class="project-body">
                         <h3 style="color:#0f766e;">Kenyan Chemistry Practical Simulator</h3>
@@ -747,13 +800,27 @@
                         </div>
                     </div>
                 </div>
-                <div id="pastors-assistant" class="project-card">
-                    <div class="project-img" style="background:#4a1d6e; color:#d8b4fe;">🙏</div>
+                <div id="pastors-assistant" class="project-card unified-height">
+                    <div class="project-img" style="background:#1e40af; color:#dbeafe;">📖</div>
                     <div class="project-body">
-                        <h3>Pastor's Sermon Assistant</h3>
-                        <p>A complete sermon preparation platform with 24 study topics, outlines, and a built-in Reference Bible integration. Click any scripture reference to open the verse instantly.</p>
+                        <h3>Bible Study Helper</h3>
+                        <p>A complete Bible study platform for everyone — not just pastors. Browse 24+ study topics with outlines and notes, and click any scripture reference to open the Safari Reference Bible in a new tab, auto-scrolled to that exact verse with a permanent green highlight. Rebranded from "Pastor's Sermon Assistant" and rebuilt from scratch for everyday church members and study groups.</p>
                         <div class="tech-tags">
-                            <span class="tech-tag">Ministry</span>
+                            <span class="tech-tag">Bible Study</span>
+                            <span class="tech-tag" style="background:#f0fdf4; color:#166534; border:1px solid #22c55e;">📖 Bible Integrated</span>
+                            <span class="tech-tag">Scripture Links</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://safarisoftwares-code.github.io/Bible-Study-Helper/" target="_blank" rel="noopener" class="project-link">🌐 Visit Live Site ↗</a>
+                            <a href="https://github.com/safarisoftwares-code/Bible-Study-Helper" target="_blank" rel="noopener" class="project-link">🐙 View on GitHub ↗</a>
+                            <a href="https://safarisoftwares-code.github.io/Bible-Study-Helper/bible.html" target="_blank" rel="noopener" class="project-link" style="color:#059669;">📖 Read the Bible ↗</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="wallpaper-manager" class="project-card unified-height">
+                    <div class="project-img" style="background:#1e1b4b; color:#c4b5fd;">🖼️</div>
+                    <div class="project-body">
+                        <h3>Wallpaper Manager</h3>
                         <p>A wallpaper management application — organize, categorize, and manage wallpaper collections with tagging and search functionality.</p>
                         <div class="tech-tags"><span class="tech-tag">Media</span><span class="tech-tag">Management</span><span class="tech-tag">App</span></div>
                         <div class="project-links">
@@ -761,7 +828,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="boss-watu" class="project-card">
+                <div id="boss-watu" class="project-card unified-height">
                     <div class="project-img" style="background:#1e293b; color:#94a3b8;">🤝</div>
                     <div class="project-body">
                         <h3>Boss & Watu Wamkono</h3>
@@ -773,7 +840,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="memory-game" class="project-card">
+                <div id="memory-game" class="project-card unified-height">
                     <div class="project-img" style="background:#3b0764; color:#e9d5ff;">🧠</div>
                     <div class="project-body">
                         <h3>Memory Game</h3>
@@ -1547,12 +1614,32 @@
                     .catch(err => console.error('SW failed:', err));
             });
         }
+
+        // UNIFORM CARD HEIGHT: measure tallest unified card, apply to all
+        (function() {
+            function applyUniformHeight() {
+                var cards = document.querySelectorAll('.project-card.unified-height');
+                if (!cards.length) return;
+                document.documentElement.style.setProperty('--uniform-card-h', 'auto');
+                cards.forEach(function(c){ c.style.height = 'auto'; });
+                var max = 0;
+                cards.forEach(function(c){
+                    if (c.classList.contains('trim-half-cm')) return;
+                    max = Math.max(max, c.getBoundingClientRect().height);
+                });
+                if (max < 380) max = 380;
+                document.documentElement.style.setProperty('--uniform-card-h', max + 'px');
+                cards.forEach(function(c){ c.style.height = ''; });
+                console.log('[uniform] card height =', max, 'px');
+            }
+            if (document.fonts && document.fonts.ready) {
+                document.fonts.ready.then(applyUniformHeight);
+            }
+            window.addEventListener('load', applyUniformHeight);
+            window.addEventListener('resize', function(){
+                clearTimeout(window.__uhT); window.__uhT = setTimeout(applyUniformHeight, 200);
+            });
+        })();
     </script>
 </body>
 </html>
-
-
-
-
-
-
