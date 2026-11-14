@@ -422,7 +422,7 @@
 
 
         /* --- UNIFORM CARD HEIGHT (Management Systems & ERPs downward) --- */
-        :root { --uniform-card-h: 420px; }
+        :root { --uniform-card-h: calc(420px + 3.2cm); }
         .project-card.unified-height {
             height: var(--uniform-card-h) !important;
             min-height: 380px !important;
@@ -647,7 +647,8 @@
                         <p>A custom calendar and scheduling application with event management, reminders, and a clean interface for personal or organizational use.</p>
                         <div class="tech-tags"><span class="tech-tag">Calendar</span><span class="tech-tag">Scheduling</span><span class="tech-tag">Web App</span></div>
                         <div id="heavenly-wonders" class="project-card featured unified-height" style="background:linear-gradient(135deg,#ffffff,#fdf4ff); border:2px solid #c026d3;">
-                    <div class="project-img" style="background-image: url('images/ministry-header.png'); background-size: cover; background-position: center 20%; border-bottom: 2px solid #c026d3;"></div>
+                    <div class="project-img" style="background-image: url('images/ministry-header.png'); background-size: cover; background-position: center 20%; border-bottom: 2px solid #c026d3;">
+                    </div>
                     <div class="project-body">
                         <h3 style="color:#701a75;">Heavenly Wonders Ministry</h3>
                         <p>A complete digital ecosystem for a ministry, featuring a public-facing website and a secure, unified admin dashboard. Includes a sermon library, testimony approvals, prayer requests, newsletter subscription with protected JSON storage, and a PWA for mobile installs. Built with PHP.</p>
@@ -1641,7 +1642,7 @@
                     max = Math.max(max, c.getBoundingClientRect().height);
                 });
                 if (max < 380) max = 380;
-                document.documentElement.style.setProperty('--uniform-card-h', max + 'px');
+                document.documentElement.style.setProperty('--uniform-card-h', 'calc(420px + 3.2cm)');
                 cards.forEach(function(c){ c.style.height = ''; });
                 console.log('[uniform] card height =', max, 'px');
             }
